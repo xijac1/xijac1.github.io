@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        .time {
+            font-size: 13px;
+            position: absolute;
+        }
+    </style>
+    
 </head>
 <body>
     <h2> to do list: 09/06/2024</h2>
@@ -15,6 +23,35 @@
     <b>- COSC3360 </b>
     <br>
     <b>- COSC4377 </b>
+
+
+    <div class="time" id="clock"></div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const formattedTime = now.toLocaleString('en-US', {
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            });
+
+            document.getElementById('clock').innerHTML = formattedTime;
+        }
+
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+
+        // Initial call to display the clock immediately
+        updateClock();
+    </script>
+
+
+
 
     
     
