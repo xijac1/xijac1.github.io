@@ -25,7 +25,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #fff;
+    background-color: #f8f9fa;
     border-right: 1px solid #e6ecf0;
     display: flex;
     flex-direction: column;
@@ -36,7 +36,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #1da1f2;
+    color: #000000;
 }
 
 .sidebar a {
