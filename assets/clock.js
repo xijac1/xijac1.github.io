@@ -10,7 +10,10 @@ function updateClock() {
         hour12: false
     });
 
-    document.getElementById('clock').innerHTML = formattedTime;
+    const clockElement = document.getElementById('clock');
+    if (clockElement) {
+        clockElement.innerHTML = formattedTime;
+    }
 }
 
 // Update the clock every second
