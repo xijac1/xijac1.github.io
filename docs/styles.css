@@ -20,7 +20,7 @@ body {
 }
 
 .sidebar {
-    width: 20%;
+    width: 25%;
     height: 100vh;
     position: fixed;
     top: 0;
@@ -65,7 +65,7 @@ body {
 }
 
 .main-content {
-    margin-left: 20%;
+    margin-left: 25%;
     padding: 20px;
     min-height: 100vh;
 }
@@ -80,7 +80,7 @@ footer {
 
 @media (max-width: 768px) {
     .sidebar {
-        width: 60px;
+        width: 80px;
         align-items: center;
     }
 
@@ -94,5 +94,19 @@ footer {
 
     footer {
         margin-left: 0;
+    }
+    .sidebar .logo {
+            font-size: 16px; /* Smaller size for the two letters */
+            text-indent: -9999px; /* Hide original text */
+            position: relative;
+        }
+
+    .sidebar .logo::after {
+        content: "V1"; /* Replace with your desired two letters */
+        text-indent: 0; /* Ensure the new content is visible */
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #000000; /* Match original logo color */
     }
 }
