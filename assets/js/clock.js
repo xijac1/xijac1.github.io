@@ -1,20 +1,23 @@
-function updateClock() {
-    const now = new Date();
-    const formattedTime = now.toLocaleString('en-US', {
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false
-    });
-
-    document.getElementById('clock').innerHTML = formattedTime;
+// Function to start the clock
+function startClock() {
+    // Clear any existing interval to prevent duplicates
+    if (clockInterval) {
+        clearInterval(clockInterval);
+    }
+    // Only start the interval if the clock element exists
+    if (document.getElementById('clock')) {
+        updateClock();
+        clockInterval = setInterval(updateClock, 1000);
+    }
 }
 
-// Update the clock every second
-setInterval(updateClock, 1000);
+// Function to stop the clock
+function stopClock() {
+    if (clockInterval) {
+        clearInterval(clockInterval);
+        clockInterval = null;
+    }
+}
 
-// Initial call to display the clock immediately
-updateClock();
+// Initialize the clock if the element exists
+startClock();

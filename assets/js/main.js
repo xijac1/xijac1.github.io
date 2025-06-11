@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to load page content
     function loadPage(page) {
+        // Stop the clock before loading new content
+        if (typeof stopClock === 'function') {
+            stopClock();
+        }
+
         fetch(page)
             .then(response => {
                 if (!response.ok) {
@@ -13,10 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(data => {
                 mainContent.innerHTML = data;
-                // Re-run clock.js if it exists and is needed for the loaded page
-                if (typeof updateClock === 'function' && page === 'pages/home.html') {
-                    updateClock();
-                    setInterval(updateClock, 1000);
+                // Start the clock if the clock element exists
+                if (typeof startClock === 'function' && document.getElementById('clock')) {
+                    startClock();
                 }
             })
             .catch(error => {
@@ -33,6 +37,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Load default page (e.g., home.html) on initial load
+    // Load default page
     loadPage('pages/home.html');
 });
+
+// Store the interval ID globally to allow clearing it
+let clockInterval = null;
+
+function updateClock() {
+    const clockElement = document.getElementById('clock');
+    if (clockElement) {
+        const now = new Date();
+        const formattedTime = now.toLocaleString('en-US', {
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false
+        });
+        clockElement.innerHTML = formattedTime;
+    }
+}

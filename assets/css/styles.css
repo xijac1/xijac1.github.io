@@ -19,7 +19,8 @@ body {
 }
 
 .sidebar {
-    width: 25%;
+
+    width: 20%;
     height: 100vh;
     position: fixed;
     top: 0;
@@ -31,11 +32,17 @@ body {
     padding: 20px;
 }
 
+.logo img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
 .sidebar .logo {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #000000;
+    color: #333;
 }
 
 .sidebar a {
@@ -63,8 +70,23 @@ body {
     font-size: 20px;
 }
 
+.nav-link {
+    margin: 5px !important;
+    font-size: 14px !important;
+    color: #333 !important;
+    text-decoration: underline !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+    cursor: pointer !important;
+    transition: color 0.3s !important;
+}
+
+.nav-link:hover {
+    color: #7b7878 !important;
+}
+
 .main-content {
-    margin-left: 25%;
+    margin-left: 20%;
     padding: 20px;
     min-height: 100vh;
 }
@@ -76,10 +98,102 @@ footer {
     width: 100%;
     border-top: 1px solid #e6ecf0;
 }
+.resume {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: auto;
+
+    word-wrap: break-word;
+    border: 1px solid #e6ecf0;
+
+}
+
+.home{
+    font-family:  'Courier', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+
+    margin: 20px 0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: auto;
+
+    word-wrap: break-word;
+}
+
+.contact {
+    font-family: 'Courier', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+
+    margin: 20px 0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: auto;
+
+    word-wrap: break-word;
+}
+
+.about {
+    font-family: 'Courier', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+
+    margin: 20px 0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: auto;
+
+    word-wrap: break-word;
+}
+
+.quotes {
+    font-family: 'Courier', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+
+    margin: 20px 0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: auto;
+
+    word-wrap: break-word;
+}
+
 
 @media (max-width: 768px) {
     .sidebar {
-        width: 80px;
+        width: 110px;
         align-items: center;
     }
 
@@ -88,20 +202,20 @@ footer {
     }
 
     .main-content {
-        margin-left: 60px;
+        margin-left: 110px;
     }
 
     footer {
         margin-left: 0;
     }
     .sidebar .logo {
-            font-size: 16px; /* Smaller size for the two letters */
+            font-size: 30px; /* Smaller size for the two letters */
             text-indent: -9999px; /* Hide original text */
             position: relative;
         }
 
     .sidebar .logo::after {
-        content: "V1"; /* Replace with your desired two letters */
+        content: "JA"; /* Replace with your desired two letters */
         text-indent: 0; /* Ensure the new content is visible */
         position: absolute;
         left: 50%;
