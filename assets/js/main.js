@@ -2,9 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.getElementById('main-content');
     const navButtons = document.querySelectorAll('.nav-link');
 
-    // Function to load page content
-    function loadPage(page) {
-        // Stop the clock before loading new content
+    // Function to load and display a page
+    function loadPage(page, push = true) {
         if (typeof stopClock === 'function') {
             stopClock();
         }
@@ -18,7 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(data => {
                 mainContent.innerHTML = data;
-                // Start the clock if the clock element exists
+
+                // Update browser history if needed
+                if (push) {
+                    history.pushState({ page }, '', `#${page}`);
+                }
+
                 if (typeof startClock === 'function' && document.getElementById('clock')) {
                     startClock();
                 }
@@ -29,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    // Add click event listeners to nav buttons
+    // Event listener for nav buttons
     navButtons.forEach(button => {
         button.addEventListener('click', () => {
             const page = button.getAttribute('data-page');
@@ -37,11 +41,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Load default page
-    loadPage('pages/home.html');
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', (event) => {
+        if (event.state && event.state.page) {
+            loadPage(event.state.page, false); // Don't push state again
+        }
+    });
+
+    // Load default or current page on first load
+    const defaultPage = 'pages/home.html';
+    const initialHash = location.hash.replace('#', '');
+    const initialPage = initialHash || defaultPage;
+    loadPage(initialPage, false); // Don't push state on first load
 });
 
-// Store the interval ID globally to allow clearing it
+// Clock logic
 let clockInterval = null;
 
 function updateClock() {
