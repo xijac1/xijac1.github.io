@@ -6,7 +6,7 @@ body {
     transition: background-color 0.3s, color 0.3s;
     background-color: #ffffff;
     color: #000000;
-    font-family: 'Courier New', Courier, monospace;
+    /* font-family: 'Courier New', Courier, monospace; */
 }
 
 * {
@@ -15,56 +15,10 @@ body {
     box-sizing: border-box;
 }
 
-.sidebar {
-
-    width: 20%;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #f8f9fa;
-    border-right: 1px solid #e6ecf0;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-}
-
 .logo img {
     width: 100px;
     height: auto;
     margin-bottom: 20px;
-}
-
-.sidebar .logo {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.sidebar a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #000;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 25px;
-    transition: background-color 0.2s;
-}
-
-.sidebar a:hover {
-    background-color: #e8f5fe;
-}
-
-.sidebar a.active {
-    font-weight: bold;
-    color: #1da1f2;
-}
-
-.sidebar a i {
-    margin-right: 10px;
-    font-size: 20px;
 }
 
 .nav-link {
@@ -78,12 +32,13 @@ body {
     transition: color 0.3s !important;
 }
 
-.nav-link:hover {
-    color: #7b7878 !important;
+.titles{
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 40px;
 }
 
 .main-content {
-    margin-left: 20%;
     padding: 20px;
     min-height: 100vh;
     font-family: 'Courier New', Courier, monospace;
@@ -96,9 +51,10 @@ footer {
     width: 100%;
     border-top: 1px solid #e6ecf0;
 }
+
 .resume {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.6;
     color: #333;
     background-color: #f9f9f9;
@@ -110,27 +66,23 @@ footer {
     margin-left: auto;
     margin-right: auto;
     overflow-x: auto;
-
     word-wrap: break-word;
     border: 1px solid #e6ecf0;
-
 }
 
-.home{
-    font-family:  'Courier', monospace;
+.home {
+    font-family: 'Courier', monospace;
     font-size: 14px;
     line-height: 1.6;
     color: #333;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
-
     margin: 20px 0;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     overflow-x: auto;
-
     word-wrap: break-word;
 }
 
@@ -142,139 +94,142 @@ footer {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
-
     margin: 20px 0;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     overflow-x: auto;
-
     word-wrap: break-word;
 }
 
 .about {
     font-family: 'Courier', monospace;
-    font-size: 14px;
+    font-size: 17px;
     line-height: 1.6;
     color: #333;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
-
     margin: 20px 0;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     overflow-x: auto;
-
     word-wrap: break-word;
 }
 
 .quotes {
     font-family: 'Courier', monospace;
-    font-size: 14px;
+    font-size: 17px;
     line-height: 1.6;
     color: #333;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
-
     margin: 20px 0;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     overflow-x: auto;
-
     word-wrap: break-word;
 }
 
-
-@media (max-width: 768px) {
-    .sidebar {
-        width: 110px;
-        align-items: center;
+@media (min-width: 769px) {
+    .offcanvas {
+        transform: none !important;
+        visibility: visible !important;
+        width: 20% !important;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        background-color: #f8f9fa;
+        border-right: 1px solid #e6ecf0;
     }
-
-    .sidebar a span {
+    .offcanvas .btn-close {
         display: none;
     }
-
     .main-content {
-        margin-left: 110px;
-    }
-
-    footer {
-        margin-left: 0;
-    }
-    .sidebar .logo {
-            font-size: 30px; /* Smaller size for the two letters */
-            text-indent: -9999px; /* Hide original text */
-            position: relative;
-        }
-
-    .sidebar .logo::after {
-        content: "JA"; /* Replace with your desired two letters */
-        text-indent: 0; /* Ensure the new content is visible */
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        color: #000000; /* Match original logo color */
+        margin-left: 20%;
     }
 }
 
-
-/* ------------------------------------------------------------------ */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+    }
+    .mainunit {
+        width: 100%;
+    }
+}
 
 .motherdiv {
-  margin-top: 0px;
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap-reverse;
-  gap: 100px;
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap-reverse;
+    gap: 100px;
 }
 
 .mainunit {
-  width: 350px;
-  display: flex;
-  flex-direction: column;
-  background-color: #f9f9f9;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .onepointone {
-  display: flex;
-  justify-content: center;
-  text-align: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
 
 .twopointtwo {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  margin: 0;
-  padding-left: 15px;
-  padding-right: 15px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin: 0;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .twopointtwo p {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .divpic {
-  margin: 15px;
-  padding: 0;
-  display: flex;
-  justify-content: center;
+    margin: 15px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
 }
+
 .divpic img {
-  width: 150px;
-  height: 150px;
-
-  object-fit: cover;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
 }
 
+/* Hamburger button styles */
+.hamburger-btn {
+    border: none;
+    background: transparent;
+    padding: 0;
+}
 
+.hamburger-line {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: black;
+    margin: 5px 0;
+}
 
-
-
-
+/* Adjust offcanvas width for mobile */
+@media (max-width: 768px) {
+    .offcanvas {
+        --bs-offcanvas-width: 50% !important;
+    }
+}
