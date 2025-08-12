@@ -61,7 +61,7 @@ body {
 }
 
 footer {
-    background-color: #f8f9fa;
+
     padding: 20px;
     text-align: center;
     width: 100%;
@@ -102,7 +102,7 @@ footer {
 
 .quotes {
     font-family: 'Courier', monospace;
-    font-size: 17px;
+    font-size: 15px;
     line-height: 1.6;
     color: #333;
     background-color: #ffffff;
@@ -132,6 +132,26 @@ footer {
     overflow-x: auto;
     word-wrap: break-word;
     border: 1px solid #e6ecf0;
+    position: relative; /* To position the LinkedIn button */
+
+}
+
+.linkedin-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #f8f9fa; /* Matches resume container background */
+    border: 1px solid #0077b5; /* LinkedIn blue border */
+    color: #0077b5; /* LinkedIn blue text */
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.linkedin-btn:hover {
+    background-color: #0077b5;
+    color: white;
 }
 
 .contact {
