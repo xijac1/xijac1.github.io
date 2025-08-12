@@ -1,4 +1,8 @@
 .time {
+    top: 1.5rem; /* Matches the hamburger's top padding for vertical alignment on mobile */
+    right: 2rem;
+    z-index: 1051; /* Ensures it's above the offcanvas (Bootstrap offcanvas is z-1050) and sidebar (z-1000) if needed */
+    position:absolute;
     font-size: 13px;
 }
 
@@ -7,6 +11,12 @@ body {
     background-color: #ffffff;
     color: #000000;
     /* font-family: 'Courier New', Courier, monospace; */
+}
+.offcanvas-title {
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center; /* Centers the text horizontally */
+    width: 100%; /* Ensures it spans the header for consistent centering */
 }
 
 * {
@@ -32,6 +42,11 @@ body {
     transition: color 0.3s !important;
 }
 
+.nav-link.btn {
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 18px !important;
+}
+
 .titles{
     text-align: center;
     font-weight: bold;
@@ -53,57 +68,7 @@ footer {
     border-top: 1px solid #e6ecf0;
 }
 
-.resume {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 15px;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    overflow-x: auto;
-    word-wrap: break-word;
-    border: 1px solid #e6ecf0;
-}
-
 .home {
-    font-family: 'Courier', monospace;
-    font-size: 14px;
-    line-height: 1.6;
-    color: #333;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    margin: 20px 0;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    overflow-x: auto;
-    word-wrap: break-word;
-}
-
-.contact {
-    font-family: 'Courier', monospace;
-    font-size: 14px;
-    line-height: 1.6;
-    color: #333;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    margin: 20px 0;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    overflow-x: auto;
-    word-wrap: break-word;
-}
-
-.about {
     font-family: 'Courier', monospace;
     font-size: 17px;
     line-height: 1.6;
@@ -113,6 +78,22 @@ footer {
     border-radius: 8px;
     margin: 20px 0;
     max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: auto;
+    word-wrap: break-word;
+}
+
+.projects {
+    font-family: 'Courier', monospace;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    margin: 20px 0;
+
     margin-left: auto;
     margin-right: auto;
     overflow-x: auto;
@@ -125,7 +106,41 @@ footer {
     line-height: 1.6;
     color: #333;
     background-color: #ffffff;
-    padding: 20px;
+    padding: 40px;
+    border-radius: 8px;
+    margin: 20px 0;
+
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: auto;
+    word-wrap: break-word;
+}
+
+.resume {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 60px 0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: auto;
+    word-wrap: break-word;
+    border: 1px solid #e6ecf0;
+}
+
+.contact {
+    font-family: 'Courier', monospace;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #ffffff;
+    padding: 40px;
     border-radius: 8px;
     margin: 20px 0;
     max-width: 800px;
@@ -134,6 +149,8 @@ footer {
     overflow-x: auto;
     word-wrap: break-word;
 }
+
+
 
 @media (min-width: 769px) {
     .offcanvas {
@@ -218,6 +235,8 @@ footer {
     border: none;
     background: transparent;
     padding: 0;
+    margin-top: 1.4rem; /* Adjusted for better alignment with the clock */
+    margin-left: 2rem;
 }
 
 .hamburger-line {
@@ -231,6 +250,63 @@ footer {
 /* Adjust offcanvas width for mobile */
 @media (max-width: 768px) {
     .offcanvas {
-        --bs-offcanvas-width: 50% !important;
+        --bs-offcanvas-width: 35% !important;
+    }
+}
+
+.quote-motherdiv {
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px; /* Consistent gap for layout */
+}
+
+.quote-unit {
+    width: 400px !important; /* Slightly narrower for a taller, rectangular look */
+    min-height: 100px; /* Increased height to make rectangles longer */
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 15px; /* Increased padding for internal spacing */
+    border-radius: 8px; /* Keep rounded corners for consistency */
+}
+
+.quote-unit .onepointone {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px; /* Consistent font size */
+    margin-bottom: 10px; /* Space between title and quote */
+}
+
+.quote-unit .twopointtwo {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14px; /* Consistent quote text size */
+    flex-grow: 1; /* Allows content to stretch vertically */
+}
+
+.quote-unit .twopointtwo p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Media query for small devices (2 per row) */
+@media (max-width: 768px) {
+    .quote-unit {
+        width: calc(50% - 20px); /* 2 per row with gap */
+        min-height: 90px; /* Slightly shorter for mobile */
+    }
+}
+
+/* Media query for larger screens (3 per row) */
+@media (min-width: 769px) {
+    .quote-unit {
+        width: calc(33.33% - 20px); /* 3 per row with gap */
     }
 }

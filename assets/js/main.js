@@ -4,34 +4,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to load and display a page
     function loadPage(page, push = true) {
-        if (typeof stopClock === 'function') {
-            stopClock();
-        }
-
-        fetch(page)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Page not found');
-                }
-                return response.text();
-            })
-            .then(data => {
-                mainContent.innerHTML = data;
-
-                // Update browser history if needed
-                if (push) {
-                    history.pushState({ page }, '', `#${page}`);
-                }
-
-                if (typeof startClock === 'function' && document.getElementById('clock')) {
-                    startClock();
-                }
-            })
-            .catch(error => {
-                mainContent.innerHTML = '<p>Error loading page. Please try again.</p>';
-                console.error(error);
-            });
+    if (typeof stopClock === 'function') {
+        stopClock();
     }
+
+    fetch(page)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Page not found');
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('dynamic-content').innerHTML = data;  // Load into sub-container
+
+            // Update browser history if needed
+            if (push) {
+                history.pushState({ page }, '', `#${page}`);
+            }
+
+            if (typeof startClock === 'function' && document.getElementById('clock')) {
+                startClock();
+            }
+        })
+        .catch(error => {
+            document.getElementById('dynamic-content').innerHTML = '<p>Error loading page. Please try again.</p>';
+            console.error(error);
+        });
+}
 
     // Event listener for nav buttons
     navButtons.forEach(button => {
