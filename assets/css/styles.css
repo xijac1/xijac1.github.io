@@ -176,7 +176,7 @@ footer {
     .offcanvas {
         transform: none !important;
         visibility: visible !important;
-        width: 20% !important;
+        width: 15% !important;
         position: fixed;
         top: 0;
         bottom: 0;
