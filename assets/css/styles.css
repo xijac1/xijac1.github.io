@@ -1,8 +1,8 @@
 .time {
     top: 1.5rem; /* Matches the hamburger's top padding for vertical alignment on mobile */
     right: 2rem;
-    z-index: 1051; /* Ensures it's above the offcanvas (Bootstrap offcanvas is z-1050) and sidebar (z-1000) if needed */
-    position:absolute;
+    z-index: 1051; /* Ensures it's above the offcanvas (Bootstrap offcanvas is z-1050) and sidebar (z-1000) */
+    position: absolute;
     font-size: 13px;
 }
 
@@ -48,7 +48,7 @@ body {
     font-size: 18px !important;
 }
 
-.titles{
+.titles {
     text-align: center;
     font-weight: bold;
     margin-bottom: 40px;
@@ -57,12 +57,12 @@ body {
 
 .main-content {
     padding: 20px;
+    padding-left: 80px; /* Ensures content starts to the right of the sidebar */
     min-height: 100vh;
     font-family: 'Courier New', Courier, monospace;
 }
 
 footer {
-
     padding: 20px;
     text-align: center;
     width: 100%;
@@ -94,7 +94,6 @@ footer {
     padding: 40px;
     border-radius: 8px;
     margin: 20px 0;
-
     margin-left: auto;
     margin-right: auto;
     overflow-x: auto;
@@ -110,7 +109,6 @@ footer {
     padding: 40px;
     border-radius: 8px;
     margin: 20px 0;
-
     margin-left: auto;
     margin-right: auto;
     overflow-x: auto;
@@ -134,7 +132,6 @@ footer {
     word-wrap: break-word;
     border: 1px solid #e6ecf0;
     position: relative; /* To position the LinkedIn button */
-
 }
 
 .linkedin-btn {
@@ -171,8 +168,6 @@ footer {
     word-wrap: break-word;
 }
 
-
-
 @media (min-width: 769px) {
     .offcanvas {
         transform: none !important;
@@ -189,17 +184,20 @@ footer {
     .offcanvas .btn-close {
         display: none;
     }
-    .main-content {
-        margin-left: 20%;
-    }
 }
 
 @media (max-width: 768px) {
-    .main-content {
-        margin-left: 0;
-    }
     .mainunit {
         width: 100%;
+    }
+    .offcanvas {
+        --bs-offcanvas-width: 35% !important;
+        position: fixed;
+        z-index: 1050; /* Above content */
+        transition: transform 0.3s ease-in-out;
+    }
+    .titles {
+        font-size: 36px; /* Reduced font size for titles on mobile */
     }
 }
 
@@ -268,13 +266,6 @@ footer {
     margin: 5px 0;
 }
 
-/* Adjust offcanvas width for mobile */
-@media (max-width: 768px) {
-    .offcanvas {
-        --bs-offcanvas-width: 35% !important;
-    }
-}
-
 .quote-motherdiv {
     margin-top: 0px;
     display: flex;
@@ -332,25 +323,22 @@ footer {
     }
 }
 
-/* Center website content */
-
-
 /* Sidebar styles */
 .sidebar {
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
-    width: 60px; /* collapsed width */
+    width: 60px; /* Collapsed width, always visible */
     background-color: #f8f9fa;
     border-right: 1px solid #e6ecf0;
     overflow-x: hidden;
     transition: width 0.3s ease;
-    z-index: 1000;
+    z-index: 1050; /* Above content */
 }
 
 .sidebar:hover {
-    width: 200px; /* expand on hover */
+    width: 200px; /* Expand on hover */
 }
 
 .sidebar-header {
@@ -392,12 +380,14 @@ footer {
     display: inline;
 }
 
-/* Push content to the right of sidebar */
-@media (min-width: 0px) {
-    .main-content {
-        margin-left: 60px; /* collapsed width */
+/* Sidebar always visible with icons on mobile */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 60px; /* Always show icons */
+        transition: width 0.3s ease;
+        z-index: 1050; /* Above content */
     }
-    .sidebar:hover ~ .main-content {
-        margin-left: 200px; /* expanded width */
+    .sidebar.active {
+        width: 35%; /* Expand to show text when active */
     }
 }
