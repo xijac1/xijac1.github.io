@@ -391,3 +391,29 @@ footer {
         width: 35%; /* Expand to show text when active */
     }
 }
+.sidebar-logo {
+    display: block;
+    margin: 0 auto;
+    padding: 3px;
+}
+/* Logo states */
+.collapsed-logo {
+    display: block;
+    max-width: 50px;
+    transition: opacity 0.3s ease;
+}
+
+.expanded-logo {
+    display: none;
+    max-width: 170px;
+    transition: opacity 0.3s ease;
+}
+
+/* Swap logos on hover */
+.sidebar:hover .collapsed-logo {
+    display: none;
+}
+
+.sidebar:hover .expanded-logo {
+    display: block;
+}
