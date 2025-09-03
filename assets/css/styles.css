@@ -467,14 +467,14 @@ footer {
         flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
-        padding: 0 30px !important; /* give breathing room */
+        padding: 0 20px !important; /* give breathing room */
         margin: 0 !important;
         font-size: 14px !important;
         height: 100% !important;
     }
 
     .sidebar .nav-link i {
-        font-size: 20px !important;
+        font-size: 26px !important;
         margin: 0 !important;
     }
 
