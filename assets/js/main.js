@@ -4,34 +4,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to load and display a page
     function loadPage(page, push = true) {
-    if (typeof stopClock === 'function') {
-        stopClock();
+        if (typeof stopClock === 'function') {
+            stopClock();
+        }
+
+        fetch(page)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Page not found');
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('dynamic-content').innerHTML = data;  // Load into sub-container
+
+                // Update browser history if needed
+                if (push) {
+                    history.pushState({ page }, '', `#${page}`);
+                }
+
+                if (typeof startClock === 'function' && document.getElementById('clock')) {
+                    startClock();
+                }
+            })
+            .catch(error => {
+                document.getElementById('dynamic-content').innerHTML = '<p>Error loading page. Please try again.</p>';
+                console.error(error);
+            });
     }
-
-    fetch(page)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Page not found');
-            }
-            return response.text();
-        })
-        .then(data => {
-            document.getElementById('dynamic-content').innerHTML = data;  // Load into sub-container
-
-            // Update browser history if needed
-            if (push) {
-                history.pushState({ page }, '', `#${page}`);
-            }
-
-            if (typeof startClock === 'function' && document.getElementById('clock')) {
-                startClock();
-            }
-        })
-        .catch(error => {
-            document.getElementById('dynamic-content').innerHTML = '<p>Error loading page. Please try again.</p>';
-            console.error(error);
-        });
-}
 
     // Event listener for nav buttons
     navButtons.forEach(button => {
@@ -40,6 +40,27 @@ document.addEventListener('DOMContentLoaded', () => {
             loadPage(page);
         });
     });
+
+    // Home logo button (mobile mode)
+    document.addEventListener('click', (event) => {
+        const homeBtn = event.target.closest('.home-btn');
+        if (homeBtn) {
+            const page = homeBtn.getAttribute('data-page');
+            loadPage(page);
+        }
+    });
+
+     // Event listener for project boxes
+    document.addEventListener('click', (event) => {
+        const projectBox = event.target.closest('.project-link');
+        if (projectBox) {
+            const page = projectBox.getAttribute('data-page');
+            loadPage(page);
+        }
+    });
+
+    
+
 
     // Handle browser back/forward buttons
     window.addEventListener('popstate', (event) => {
@@ -53,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const initialHash = location.hash.replace('#', '');
     const initialPage = initialHash || defaultPage;
     loadPage(initialPage, false); // Don't push state on first load
+
 });
 
 // Clock logic

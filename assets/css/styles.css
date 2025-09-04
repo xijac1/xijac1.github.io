@@ -418,6 +418,13 @@ footer {
     display: block;
 }
 @media (max-width: 768px) {
+    .home-btn {
+        width: 26px;   /* same size as icons */
+        height: 26px;
+        object-fit: contain;
+        cursor: pointer;
+    }
+    
     .main-content {
         padding-left: 0 !important;   /* remove sidebar padding */
         padding-right: 0 !important;  /* optional: reset right padding */
@@ -492,4 +499,44 @@ footer {
         padding-bottom: 80px !important;
     }
 }
+
+
+/* Make project boxes pop out on hover */
+.mainunit {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mainunit:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.resume-contact a {
+    margin: 0 10px;
+    color: #0077b5; /* LinkedIn blue by default */
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.2s ease;
+}
+
+.resume-contact a i {
+    margin-right: 6px;
+    font-size: 18px;
+}
+
+.resume-contact a:hover {
+    color: #005582; /* Darker blue on hover */
+}
+
+.resume-contact a[href*="github.com"] { color: #333; }   /* GitHub black */
+.resume-contact a[href*="linkedin.com"] { color: #0077b5; }  /* LinkedIn blue */
+.resume-contact a[href^="mailto:"] { color: #000000; }      /* Email red */
+.resume-contact a[href^="tel:"] { color: #000000; }         /* Phone green */
 
