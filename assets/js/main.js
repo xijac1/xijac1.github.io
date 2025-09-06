@@ -70,10 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// ...existing code...
-
-    
-
 
     // Handle browser back/forward buttons
     window.addEventListener('popstate', (event) => {
@@ -110,7 +106,6 @@ function updateClock() {
     }
 }
 
-// ...existing code...
 
 // Simple localStorage-based view counter
 function updateViewCounter() {
@@ -130,8 +125,8 @@ function updateViewCounter() {
 
 document.addEventListener('DOMContentLoaded', function() {
     updateViewCounter();
-    // ...existing code...
+
 });
 
-// ...existing code...
+
 
