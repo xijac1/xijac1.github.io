@@ -418,6 +418,9 @@ footer {
     display: block;
 }
 @media (max-width: 768px) {
+    #view-counter {
+        left: 2rem !important;
+    }
     .home-btn {
         width: 26px;   /* same size as icons */
         height: 26px;
@@ -540,3 +543,45 @@ footer {
 .resume-contact a[href^="mailto:"] { color: #000000; }      /* Email red */
 .resume-contact a[href^="tel:"] { color: #000000; }         /* Phone green */
 
+
+
+
+#view-counter {
+    top: 1.5rem;
+    right: auto;
+
+    position: absolute;
+    font-size: 13px !important;
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    color: #000000 !important;
+    font-family: inherit !important;
+    box-shadow: none !important;
+    letter-spacing: normal !important;
+    display: inline !important;
+    min-width: unset !important;
+    justify-content: unset !important;
+    height: unset;
+    top: 1.5rem; /* Matches the hamburger's top padding for vertical alignment on mobile */
+    left: 6rem;
+}
+
+
+
+.quote-unit {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quote-unit:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+}

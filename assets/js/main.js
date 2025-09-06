@@ -58,6 +58,19 @@ document.addEventListener('DOMContentLoaded', () => {
             loadPage(page);
         }
     });
+    
+    document.addEventListener('click', function(event) {
+    const homeNavLink = event.target.closest('.home-nav-link');
+    if (homeNavLink) {
+        event.preventDefault();
+        const page = homeNavLink.getAttribute('data-page');
+        if (page) {
+            loadPage(page);
+        }
+    }
+});
+
+// ...existing code...
 
     
 
@@ -96,3 +109,29 @@ function updateClock() {
         clockElement.innerHTML = formattedTime;
     }
 }
+
+// ...existing code...
+
+// Simple localStorage-based view counter
+function updateViewCounter() {
+    const viewKey = 'site-view-count';
+    let count = localStorage.getItem(viewKey);
+    if (!count) {
+        count = 1;
+    } else {
+        count = parseInt(count) + 1;
+    }
+    localStorage.setItem(viewKey, count);
+    const viewCountElem = document.getElementById('view-count');
+    if (viewCountElem) {
+        viewCountElem.textContent = count;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    updateViewCounter();
+    // ...existing code...
+});
+
+// ...existing code...
+
