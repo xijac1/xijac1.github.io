@@ -188,7 +188,7 @@ footer {
 
 @media (max-width: 768px) {
     .mainunit {
-        width: 100%;
+        width: calc(100% - 20px) !important; /* 1 per row with gap */
     }
     .offcanvas {
         --bs-offcanvas-width: 35% !important;
@@ -205,33 +205,47 @@ footer {
     margin-top: 0px;
     display: flex;
     justify-content: space-evenly;
-    flex-wrap: wrap-reverse;
-    gap: 100px;
+    flex-wrap: wrap;
+    gap: 20px; /* Consistent gap for layout */
 }
 
 .mainunit {
-    width: 350px;
+    width: 350px !important; /* Slightly narrower for a taller, rectangular look */
+    min-height: 100px; /* Increased height to make rectangles longer */
     display: flex;
     flex-direction: column;
     background-color: #f9f9f9;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 15px; /* Increased padding for internal spacing */
+    border-radius: 8px; /* Keep rounded corners for consistency */
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.onepointone {
+.mainunit:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.mainunit .onepointone {
     display: flex;
     justify-content: center;
     text-align: center;
+    font-size: 16px; /* Consistent font size */
+    margin-bottom: 10px; /* Space between title and content */
 }
 
-.twopointtwo {
+.mainunit .twopointtwo {
     word-wrap: break-word;
     overflow-wrap: break-word;
     margin: 0;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14px; /* Consistent content text size */
+    flex-grow: 1; /* Allows content to stretch vertically */
 }
 
-.twopointtwo p {
+.mainunit .twopointtwo p {
     margin: 0;
     padding: 0;
 }
@@ -247,6 +261,28 @@ footer {
     width: 150px;
     height: 150px;
     object-fit: cover;
+}
+
+/* Media query for small devices (1 per row) */
+@media (max-width: 768px) {
+    .mainunit {
+        width: calc(100% - 20px) !important; /* 1 per row with gap */
+        min-height: 90px; /* Slightly shorter for mobile */
+    }
+}
+
+/* Media query for computer/iPad screens (2 per row) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .mainunit {
+        width: calc(50% - 20px) !important; /* 2 per row with gap */
+    }
+}
+
+/* Media query for larger screens (3 per row) */
+@media (min-width: 1025px) {
+    .mainunit {
+        width: calc(33.33% - 20px) !important; /* 3 per row with gap */
+    }
 }
 
 /* Hamburger button styles */
@@ -322,6 +358,7 @@ footer {
         width: calc(33.33% - 20px); /* 3 per row with gap */
     }
 }
+
 @media (max-width: 768px) {
     .resume {
         padding: 20px !important;
@@ -510,24 +547,6 @@ footer {
     }
 }
 
-
-/* Make project boxes pop out on hover */
-.mainunit {
-    width: 350px;
-    display: flex;
-    flex-direction: column;
-    background-color: #f9f9f9;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.mainunit:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
-}
-
 .resume-contact a {
     margin: 0 10px;
     color: #0077b5; /* LinkedIn blue by default */
@@ -550,13 +569,9 @@ footer {
 .resume-contact a[href^="mailto:"] { color: #000000; }      /* Email red */
 .resume-contact a[href^="tel:"] { color: #000000; }         /* Phone green */
 
-
-
-
 #view-counter {
     top: 1.5rem;
     right: auto;
-
     position: absolute;
     font-size: 13px !important;
     background: none;
@@ -575,8 +590,6 @@ footer {
     left: 6rem;
 }
 
-
-
 .quote-unit {
     width: 350px;
     display: flex;
@@ -593,7 +606,6 @@ footer {
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-
 .mobile-break {
     display: none;
 }
@@ -605,9 +617,8 @@ footer {
     }
 }
 
-
 .projects-page {
-     font-family: 'Courier', monospace;
+    font-family: 'Courier', monospace;
     font-size: 17px;
     line-height: 1.6;
     color: #333;
@@ -620,5 +631,73 @@ footer {
     margin-right: auto;
     overflow-x: auto;
     word-wrap: break-word;
-    
+}
+
+/* Styles for quote filter bar */
+.quote-filter-bar {
+    background-color: #ffffff; /* Matches page background */
+    padding: 10px 20px;
+    border-bottom: 1px solid #e6ecf0; /* Matches footer border for consistency */
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.author-dropdown {
+    width: 200px; /* Fixed width, not full-width */
+    padding: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    border: 1px solid #e6ecf0;
+    border-radius: 5px;
+    background-color: #f9f9f9; /* Matches quote-unit background */
+    cursor: pointer;
+    outline: none;
+}
+
+.author-dropdown:focus {
+    border-color: #0077b5; /* LinkedIn blue for focus */
+    box-shadow: 0 0 5px rgba(0, 119, 181, 0.3);
+}
+
+/* Styles for project filter bar */
+.project-filter-bar {
+    background-color: #ffffff; /* Matches page background */
+    padding: 10px 20px;
+    border-bottom: 1px solid #e6ecf0; /* Matches footer border for consistency */
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.type-dropdown {
+    width: 200px; /* Fixed width, not full-width */
+    padding: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    border: 1px solid #e6ecf0;
+    border-radius: 5px;
+    background-color: #f9f9f9; /* Matches mainunit background */
+    cursor: pointer;
+    outline: none;
+}
+
+.type-dropdown:focus {
+    border-color: #0077b5; /* LinkedIn blue for focus */
+    box-shadow: 0 0 5px rgba(0, 119, 181, 0.3);
+}
+
+@media (max-width: 768px) {
+    .quote-filter-bar {
+        padding: 10px;
+    }
+    .author-dropdown {
+        width: 150px; /* Smaller width for mobile */
+    }
+    .project-filter-bar {
+        padding: 10px;
+    }
+    .type-dropdown {
+        width: 150px; /* Smaller width for mobile */
+    }
 }

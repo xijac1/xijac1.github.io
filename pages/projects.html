@@ -6,68 +6,91 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- <div class="time container-fluid" id="clock"></div><br> -->
-     <div class="container-fluid projects">
-
+    <div class="container-fluid projects">
         <div class="lowermainmother">
-        <h1 class="lowermaintext titles">My Projects & Certificates</h1>
-        <div class="motherdiv">
-            <div class="mainunit project-link" data-page="pages/projects/math4322.html">
-                <div class="onepointone"><h4>MATH4322</h4></div>
-                <div class="twopointtwo">
-                    <p>Math4322 Project</p>
-                </div>
-                <div class="divpic">
-                    <img src="/assets/images/work.gif" />
-                </div>
+            <h1 class="lowermaintext titles">My Projects, Certificates, & Courses</h1>
+            <div class="project-filter-bar">
+                <select id="type-filter" class="type-dropdown">
+                    <option value="all">All Items</option>
+                    <option value="project">Projects</option>
+                    <option value="certificate">Certificates</option>
+                    <option value="course">Courses</option>
+                </select>
             </div>
-            <div class="mainunit project-link" data-page="pages/projects/math4323.html">
-                <div class="onepointone"><h4>MATH4323</h4></div>
-                <div class="twopointtwo">
-                    <p>Math4323 Project</p>
+            <div class="motherdiv">
+                <div class="mainunit project-link" data-type="project" data-page="pages/projects/math4322.html">
+                    <div class="onepointone"><h4>Math4322</h4></div>
+                    <div class="twopointtwo">
+                        <p>Math4322 Project</p>
+                    </div>
+                    <div class="divpic">
+                        <img src="/assets/images/work.gif" />
+                    </div>
                 </div>
-                <div class="divpic">
-                    <img src="/assets/images/neural.webp" />
+                <div class="mainunit project-link" data-type="project" data-page="pages/projects/math4323.html">
+                    <div class="onepointone"><h4>MATH4323</h4></div>
+                    <div class="twopointtwo">
+                        <p>Math4323 Project</p>
+                    </div>
+                    <div class="divpic">
+                        <img src="/assets/images/neural.webp" />
+                    </div>
                 </div>
-            </div>
-            <div class="mainunit">
-                <div class="onepointone"><h4>MATH4323</h4></div>
-                <div class="twopointtwo">
-                    <p>Math4322 Project</p>
+                <div class="mainunit" data-type="project">
+                    <div class="onepointone"><h4>MATH4323</h4></div>
+                    <div class="twopointtwo">
+                        <p>Math4322 Project</p>
+                    </div>
+                    <div class="divpic">
+                        <img src="/assets/images/neural.webp" />
+                    </div>
                 </div>
-                <div class="divpic">
-                    <img src="/assets/images/neural.webp" />
+                <div class="mainunit" data-type="project">
+                    <div class="onepointone"><h4>MATH4323</h4></div>
+                    <div class="twopointtwo">
+                        <p>Math4322 Project</p>
+                    </div>
+                    <div class="divpic">
+                        <img src="/assets/images/neural.webp" />
+                    </div>
                 </div>
-            </div>
-            <div class="mainunit">
-                <div class="onepointone"><h4>MATH4323</h4></div>
-                <div class="twopointtwo">
-                    <p>Math4322 Project</p>
+                <div class="mainunit" data-type="project">
+                    <div class="onepointone"><h4>MATH4323</h4></div>
+                    <div class="twopointtwo">
+                        <p>Math4322 Project</p>
+                    </div>
+                    <div class="divpic">
+                        <img src="/assets/images/nural.png" />
+                    </div>
                 </div>
-                <div class="divpic">
-                    <img src="/assets/images/neural.webp" />
+                <div class="mainunit" data-type="project">
+                    <div class="onepointone"><h4>HEY</h4></div>
+                    <div class="twopointtwo">
+                        <p> hello world.</p>
+                    </div>
+                    <div class="divpic">
+                        <img src="/assets/images/miff.png" />
+                    </div>
                 </div>
-            </div>
-            <div class="mainunit">
-                <div class="onepointone"><h4>MATH4323</h4></div>
-                <div class="twopointtwo">
-                    <p>Math4322 Project</p>
+                <div class="mainunit" data-type="certificate">
+                    <div class="onepointone"><h4>Python for Data Science</h4></div>
+                    <div class="twopointtwo">
+                        <p>Certificate from Coursera</p>
+                    </div>
+                    <div class="divpic">
+                        <img src="/assets/images/python.png" />
+                    </div>
                 </div>
-                <div class="divpic">
-                    <img src="/assets/images/nural.png" />
-                </div>
-            </div>
-            <div class="mainunit">
-                <div class="onepointone"><h4>HEY</h4></div>
-                <div class="twopointtwo">
-                    <p> hello world.</p>
-                </div>
-                <div class="divpic">
-                    <img src="/assets/images/miff.png" />
-                </div>
+                <div class="mainunit" data-type="course">
+                    <div class="onepointone"><h4>Data Science I</h4></div>
+                    <div class="twopointtwo">
+                        <p>COSC 3337</p>
+                    </div>
+                    <div class="divpic">
+                        <img src="/assets/images/nural.png" />
+                    </div>
             </div>
         </div>
-        
     </div>
 </body>
 </html>

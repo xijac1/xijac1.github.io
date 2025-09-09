@@ -26,11 +26,66 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (typeof startClock === 'function' && document.getElementById('clock')) {
                     startClock();
                 }
+
+                // Initialize filters based on page
+                if (page === 'pages/quotes.html') {
+                    initializeQuoteFilter();
+                } else if (page === 'pages/projects.html') {
+                    initializeProjectFilter();
+                }
             })
             .catch(error => {
                 document.getElementById('dynamic-content').innerHTML = '<p>Error loading page. Please try again.</p>';
                 console.error(error);
             });
+    }
+
+    // Function to initialize quote filter
+    function initializeQuoteFilter() {
+        const filterDropdown = document.getElementById('author-filter');
+        const quoteUnits = document.querySelectorAll('.quote-unit');
+
+        if (filterDropdown) {
+            filterDropdown.addEventListener('change', () => {
+                const selectedAuthor = filterDropdown.value;
+                let visibleIndex = 0;
+
+                quoteUnits.forEach(unit => {
+                    const author = unit.getAttribute('data-author');
+                    if (selectedAuthor === 'all' || author === selectedAuthor) {
+                        unit.style.display = 'flex';
+                        unit.style.order = visibleIndex++;
+                    } else {
+                        unit.style.display = 'none';
+                        unit.style.order = '9999'; // Push hidden elements to the end
+                    }
+                });
+            });
+        }
+    }
+
+    // Function to initialize project filter
+    function initializeProjectFilter() {
+        const filterDropdown = document.getElementById('type-filter');
+        const projectUnits = document.querySelectorAll('.mainunit');
+
+        if (filterDropdown) {
+            filterDropdown.addEventListener('change', () => {
+                const selectedType = filterDropdown.value;
+                let visibleIndex = 0;
+
+                projectUnits.forEach(unit => {
+                    const type = unit.getAttribute('data-type');
+                    if (selectedType === 'all' || type === selectedType) {
+                        unit.style.display = 'flex';
+                        unit.style.order = visibleIndex++;
+                    } else {
+                        unit.style.display = 'none';
+                        unit.style.order = '9999'; // Push hidden elements to the end
+                    }
+                });
+            });
+        }
     }
 
     // Event listener for nav buttons
@@ -50,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-     // Event listener for project boxes
+    // Event listener for project boxes
     document.addEventListener('click', (event) => {
         const projectBox = event.target.closest('.project-link');
         if (projectBox) {
@@ -60,16 +115,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     document.addEventListener('click', function(event) {
-    const homeNavLink = event.target.closest('.home-nav-link');
-    if (homeNavLink) {
-        event.preventDefault();
-        const page = homeNavLink.getAttribute('data-page');
-        if (page) {
-            loadPage(page);
+        const homeNavLink = event.target.closest('.home-nav-link');
+        if (homeNavLink) {
+            event.preventDefault();
+            const page = homeNavLink.getAttribute('data-page');
+            if (page) {
+                loadPage(page);
+            }
         }
-    }
-});
-
+    });
 
     // Handle browser back/forward buttons
     window.addEventListener('popstate', (event) => {
@@ -83,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const initialHash = location.hash.replace('#', '');
     const initialPage = initialHash || defaultPage;
     loadPage(initialPage, false); // Don't push state on first load
-
 });
 
 // Clock logic
@@ -106,7 +159,6 @@ function updateClock() {
     }
 }
 
-
 // Simple localStorage-based view counter
 function updateViewCounter() {
     const viewKey = 'site-view-count';
@@ -125,8 +177,4 @@ function updateViewCounter() {
 
 document.addEventListener('DOMContentLoaded', function() {
     updateViewCounter();
-
 });
-
-
-
