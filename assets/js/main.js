@@ -64,27 +64,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Function to initialize project filter
+    // Updated Function to initialize project filter (now for buttons)
     function initializeProjectFilter() {
-        const filterDropdown = document.getElementById('type-filter');
+        const buttons = document.querySelectorAll('.filter-btn');
         const projectUnits = document.querySelectorAll('.mainunit');
 
-        if (filterDropdown) {
-            filterDropdown.addEventListener('change', () => {
-                const selectedType = filterDropdown.value;
-                let visibleIndex = 0;
-
-                projectUnits.forEach(unit => {
-                    const type = unit.getAttribute('data-type');
-                    if (selectedType === 'all' || type === selectedType) {
-                        unit.style.display = 'flex';
-                        unit.style.order = visibleIndex++;
-                    } else {
-                        unit.style.display = 'none';
-                        unit.style.order = '9999'; // Push hidden elements to the end
-                    }
-                });
+        function filterProjects(selectedType) {
+            let visibleIndex = 0;
+            projectUnits.forEach(unit => {
+                const type = unit.getAttribute('data-type');
+                if (type === selectedType) {
+                    unit.style.display = 'flex';
+                    unit.style.order = visibleIndex++;
+                } else {
+                    unit.style.display = 'none';
+                    unit.style.order = '9999'; // Push hidden elements to the end
+                }
             });
+        }
+
+        // Add event listeners to buttons
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const selectedType = btn.dataset.filter; // Get filter type from button
+                filterProjects(selectedType);
+
+                // Optional: Add active class for highlighting
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Default to "Projects" on load
+        const defaultBtn = document.querySelector('.filter-btn[data-filter="project"]');
+        if (defaultBtn) {
+            defaultBtn.click(); // Simulate click to set initial state
         }
     }
 
