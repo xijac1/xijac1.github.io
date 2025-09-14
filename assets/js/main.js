@@ -2,6 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.getElementById('main-content');
     const navButtons = document.querySelectorAll('.nav-link');
 
+    // Function to update sidebar active icon based on current hash/page
+    function updateSidebarActive(page) {
+        document.querySelectorAll('.sidebar .nav-link').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-page') === page) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
     // Function to load and display a page
     function loadPage(page, push = true) {
         if (typeof stopClock === 'function') {
@@ -33,6 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (page === 'pages/projects.html') {
                     initializeProjectFilter();
                 }
+
+                // Update active nav link (sidebar)
+                updateSidebarActive(page);
             })
             .catch(error => {
                 document.getElementById('dynamic-content').innerHTML = '<p>Error loading page. Please try again.</p>';
@@ -150,7 +163,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const defaultPage = 'pages/home.html';
     const initialHash = location.hash.replace('#', '');
     const initialPage = initialHash || defaultPage;
+    updateSidebarActive(initialPage);
     loadPage(initialPage, false); // Don't push state on first load
+
+    // Listen for hash changes (user navigates via browser or anchor)
+    window.addEventListener('hashchange', function() {
+        const hashPage = location.hash.replace('#', '') || defaultPage;
+        updateSidebarActive(hashPage);
+    });
 });
 
 // Clock logic
