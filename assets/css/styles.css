@@ -1,3 +1,14 @@
+/* Project cards: never stretch wider than quote cards on single-column screens */
+@media (max-width: 1024px) {
+    .mainunit.project-card,
+    .mainunit.course-card,
+    .mainunit.certificate-card {
+        max-width: 350px !important;
+        width: 100% !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 .time {
     top: 1.5rem; /* Matches the hamburger's top padding for vertical alignment on mobile */
     right: 2rem;
@@ -201,23 +212,30 @@ footer {
     }
 }
 
+
 .motherdiv {
     margin-top: 0px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-wrap: wrap;
-    gap: 20px; /* Consistent gap for layout */
+    gap: 20px;
+    /* The gap will be reduced on mobile below */
 }
 
-.mainunit {
-    width: 350px !important; /* Slightly narrower for a taller, rectangular look */
-    min-height: 100px; /* Increased height to make rectangles longer */
+
+/* Unify card base for all types */
+.mainunit,
+.mainunit.project-card,
+.mainunit.course-card,
+.mainunit.certificate-card {
+    width: 350px !important;
+    min-height: 100px;
     display: flex;
     flex-direction: column;
     background-color: #f9f9f9;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    padding: 15px; /* Increased padding for internal spacing */
-    border-radius: 8px; /* Keep rounded corners for consistency */
+    padding: 15px;
+    border-radius: 8px;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -263,25 +281,40 @@ footer {
     object-fit: cover;
 }
 
-/* Media query for small devices (1 per row) */
+
+/* Responsive card widths for all card types */
 @media (max-width: 768px) {
-    .mainunit {
-        width: calc(100% - 20px) !important; /* 1 per row with gap */
-        min-height: 90px; /* Slightly shorter for mobile */
+    .mainunit,
+    .mainunit.project-card,
+    .mainunit.course-card,
+    .mainunit.certificate-card {
+        width: calc(100% - 8px) !important;
+        min-height: 90px;
+    }
+    .motherdiv {
+        gap: 8px;
     }
 }
-
-/* Media query for computer/iPad screens (2 per row) */
 @media (min-width: 769px) and (max-width: 1024px) {
-    .mainunit {
-        width: calc(50% - 20px) !important; /* 2 per row with gap */
+    .mainunit,
+    .mainunit.project-card,
+    .mainunit.course-card,
+    .mainunit.certificate-card {
+        width: calc(50% - 16px) !important;
+    }
+    .motherdiv {
+        gap: 16px;
     }
 }
-
-/* Media query for larger screens (3 per row) */
 @media (min-width: 1025px) {
-    .mainunit {
-        width: calc(33.33% - 20px) !important; /* 3 per row with gap */
+    .mainunit,
+    .mainunit.project-card,
+    .mainunit.course-card,
+    .mainunit.certificate-card {
+        width: calc(33.33% - 20px) !important;
+    }
+    .motherdiv {
+        gap: 20px;
     }
 }
 
@@ -767,6 +800,7 @@ footer {
 .mainunit.project-card .onepointone { padding: 0 6px; font-size: 18px; }
 .mainunit.project-card .twopointtwo { padding: 0 6px 6px; color: #444; }
 
+
 /* Course (text-first) */
 .mainunit.course-card {
     padding: 16px;
@@ -774,14 +808,22 @@ footer {
     min-height: 140px;
 }
 .mainunit.course-card .onepointone { margin-bottom: 6px; font-size: 17px; }
-.mainunit.course-card .twopointtwo { color: #444; }
+.mainunit.course-card .twopointtwo { color: #444; font-size: 14px; }
+
+/* Certificate card description font matches course */
+.mainunit.certificate-card .certificate-content p {
+    color: #444;
+    font-size: 14px;
+    margin: 0;
+}
 
 /* Certificate (icon + details, row layout) */
 .mainunit.certificate-card {
     flex-direction: row;
     align-items: center;
     gap: 12px;
-    padding: 12px;
+    padding: 6px 12px; /* Reduce vertical padding */
+    min-height: 60px;
 }
 .mainunit.certificate-card .divpic {
     width: 72px;
@@ -819,9 +861,10 @@ footer {
     text-decoration: none;
 }
 
-/* Responsive tweaks */
+
+/* Responsive tweaks for certificate card internal layout only (keep card shape) */
 @media (max-width: 768px) {
-    .mainunit.certificate-card {
+    .mainunit.certificate-card .certificate-content {
         flex-direction: column;
         align-items: flex-start;
     }
@@ -964,16 +1007,17 @@ footer {
 
 /* Ensure certificate content uses flex (for icon + text layout) */
 .mainunit.certificate-card .certificate-content {
-    padding: 1.5rem;
+    padding: 0.5rem 0.5rem 0.5rem 0;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
+    min-height: 48px;
 }
 
 .mainunit.certificate-card .certificate-icon {
-    margin-right: 1.5rem;
-    width: 4rem;
-    height: 4rem;
+    margin-right: 1rem;
+    width: 2.2rem;
+    height: 2.2rem;
     background-color: #dbeafe;
     border-radius: 9999px;
     display: flex;
