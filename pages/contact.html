@@ -1,17 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact</title>
 </head>
 <body>
+  <div class="container-fluid contact" style="margin-top: 60px;">
+    <h1 class="titles">Contact Me</h1>
+    <p style="text-align:center; font-size:1.1rem; margin-bottom: 30px;">
+      I’d love to hear from you! Feel free to reach out via email, phone, or connect with me on my social profiles.
+    </p>
 
-    <div class="container-fluid contact">
-    <h2 class="titles">Contact Me</h2>
-    <p>Connect with me on LinkedIn, and feel free to reach out!</p>
-    <a href="https://linkedin.com/in/julioamaya1" class="linkedin-btn-contact">LinkedIn</a>
-</div>
+    <div class="resume-contact" style="text-align:center; font-size:1rem;">
+      <a href="mailto:julio.amaya@example.com"><i class="bi bi-envelope"></i> julio.amaya@example.com</a> <br class="mobile-break">
+      <a href="tel:5551234567"><i class="bi bi-telephone"></i> (555) 123-4567</a> <br>
+      <a href="https://github.com/julioamaya" target="_blank"><i class="bi bi-github"></i> GitHub</a> |
+      <a href="https://linkedin.com/in/julioamaya1" target="_blank"><i class="bi bi-linkedin"></i> LinkedIn</a>
+    </div>
 
+    <hr style="margin:40px 0;">
+
+    <div style="max-width:600px; margin:auto;">
+      <form>
+        <div class="mb-3">
+          <label for="name" class="form-label">Your Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter your name">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Your Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email">
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" rows="5" placeholder="Write your message"></textarea>
+        </div>
+        <button type="submit" class="btn btn-outline-primary"><i class="bi bi-send"></i> Send</button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>
