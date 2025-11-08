@@ -3,63 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Showcase</title>
+  <title>Heart Disease Classification Project</title>
+
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; }
+    .container-fluid { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    h1.titles { color: #dc3545; text-align: center; margin-bottom: 40px; }
+    .section { margin-bottom: 40px; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    ul { padding-left: 20px; }
+    .btn { padding: 10px 20px; border-radius: 5px; text-decoration: none; }
+    img { max-width: 100%; height: auto; }
+  </style>
 </head>
 <body>
   <div class="container-fluid projects-page" style="margin-top:60px;">
-    <h1 class="titles">📊 Project Title Here</h1>
+    <h1 class="titles">📊 Heart Disease Classification</h1>
 
-    <!-- Hero Image -->
-    <div style="text-align:center; margin-bottom:30px;">
-      <img src="/assets/images/sample-project.jpg" alt="Project Image" 
-           style="max-width:100%; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1);">
-    </div>
-
-    <!-- Project Info -->
-    <div style="margin-bottom:30px;">
+    <!-- Project Info: Mapped from Introduction + Main Questions -->
+    <div class="section">
       <h3>Overview</h3>
       <p>
-        Brief introduction about the project. Mention the problem it solves, 
-        why you built it, or what skills/tools it demonstrates.
+        Heart disease is the leading cause of death in the US (CDC, 2022), claiming a life every 33 seconds. This project uses a UCI dataset (303 patients from Cleveland, Hungary, Switzerland, VA Long Beach) with 13 features (age, sex, chest pain type, etc.) to build classification models predicting heart disease presence (binary: yes/no). 
+        <br><br>
+        Goals: Identify key predictors, compare models (Logistic Regression vs. Random Forest), and answer: Which features matter most? What's the best model? Does age matter? Is it more common in males?
+        <br><br>
+        Built by Group 5: Almin Raja, Dinh Mai, Julio Amaya, Subhan Mehmood, Nicholas Pham.
       </p>
     </div>
 
-    <div style="margin-bottom:30px;">
+    <!-- Tech Stack: From Models + R Chunks -->
+    <div class="section">
       <h3>Tech Stack</h3>
       <ul>
-        <li>Python, TensorFlow, Pandas</li>
-        <li>Frontend: React, Bootstrap</li>
-        <li>Database: MongoDB</li>
+        <li>R (base, glm for Logistic Regression, randomForest package)</li>
+        <li>Data: CSV import via read.csv(), cross-validation (80/20 splits)</li>
+        <li>Visualization: varImpPlot for feature importance, confusion matrices</li>
+        <li>Tools: Quarto for report generation, UCI ML Repository dataset</li>
       </ul>
     </div>
 
-    <div style="margin-bottom:30px;">
-      <h3>Features</h3>
+    <!-- Features: From Description of Variables + Model Details -->
+    <div class="section">
+      <h3>Key Features & Analysis</h3>
       <ul>
-        <li>Data preprocessing and visualization</li>
-        <li>Neural network training & evaluation</li>
-        <li>Web dashboard for results</li>
+        <li><strong>Data Handling:</strong> 14 variables (13 predictors + binary response 'num'). Categorical (e.g., sex, cp) & numerical (e.g., age, chol) features.</li>
+        <li><strong>Logistic Regression:</strong> Optimal model with 8 significant predictors (sex, cp, trestbps, thalach, exang, slope, ca, thal). 82.46% accuracy via 10-fold CV.</li>
+        <li><strong>Random Forest:</strong> 500 trees, handles non-linearity; 80.33% accuracy (full model). ca, thal, cp as top features.</li>
+        <li><strong>Insights:</strong> Age not significant; heart disease 55% more likely in males (vs. 26% females).</li>
       </ul>
     </div>
 
-    <div style="margin-bottom:30px;">
+    <!-- Results: From Conclusions + Metrics -->
+    <div class="section">
       <h3>Results</h3>
       <p>
-        Describe outcomes, performance metrics, or screenshots of the app in action.
+        <strong>Best Model:</strong> Logistic Regression outperformed Random Forest (17.54% vs. 19.67% error rate). Lowest AIC/residual deviance with key predictors.
+        <br><br>
+        <strong>Top Predictors:</strong> Chest pain type (cp), vessels (ca), thalassemia (thal), sex.
+        <br><br>
+        Full report metrics: Confusion matrices, p-values, and step() AIC selection confirm robust predictions for medical triage.
       </p>
     </div>
 
-    <!-- Buttons -->
+    <!-- Buttons: Links to Full Report + Extras -->
     <div style="text-align:center; margin-top:40px;">
-      <a href="https://github.com/yourusername/project" target="_blank" 
+      <a href="/assets/certifications/pdf/Heart-Disease-Classification-Final-Report.pdf" target="_blank" 
          class="btn btn-outline-dark" style="margin:5px;">
-        <i class="bi bi-github"></i> View Code
+        📄 Full Technical Report
       </a>
-      <a href="https://your-deployed-app-link.com" target="_blank" 
+      <a href="https://archive.ics.uci.edu/dataset/45/heart+disease" target="_blank" 
          class="btn btn-outline-primary" style="margin:5px;">
-        🚀 Live Demo
+        🔗 Dataset Source
+      </a>
+      <a href="https://www.cdc.gov/heart-disease/data-research/facts-stats/index.html" target="_blank" 
+         class="btn btn-outline-info" style="margin:5px;">
+        📊 CDC Facts
+      </a>
+      <a href="https://github.com/xijac1/Heart-Disease-Classification" target="_blank" 
+         class="btn btn-outline-success" style="margin:5px;">
+        <i class="bi bi-github"></i> View Code on GitHub
       </a>
     </div>
+
+    <!-- Footer: Bibliography -->
+    <div class="section" style="margin-top: 50px; font-size: 0.9em; color: #6c757d;">
+      <h5>Bibliography</h5>
+      <ul>
+        <li>Andras Janosi, William Steinbrunn. Heart Disease. UCI Machine Learning Repository, 1989. <a href="https://doi.org/10.24432/C52P4X">DOI</a>.</li>
+        <li>CDC. “Heart Disease Facts.” <a href="https://www.cdc.gov/heart-disease/data-research/facts-stats/index.html">Link</a>, Feb 2025.</li>
+      </ul>
+    </div>
   </div>
+
 </body>
 </html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode #1 – Two Sum</title>
+    <link href="../assets/css/styles.css" rel="stylesheet">
+    <style>
+        .leetcode-container {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 900px;
+            overflow-x: auto;
+        }
+        .leetcode-code {
+            background: #f4f4f4;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            white-space: pre;
+            border: 1px solid #e6ecf0;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid leetcode-container" style="margin-top:60px;">
+        <h1 class="titles">Two Sum</h1>
+
+        <!-- Problem Steps -->
+        <h2>Solution Steps</h2>
+        <ul>
+            <li>Iterate through the array while storing numbers in a hash map.</li>
+            <li>For each number, check if <code>target - num</code> exists in the map.</li>
+            <li>If found, return indices of the two numbers.</li>
+            <li>Otherwise, insert the number into the map and continue.</li>
+        </ul>
+
+        <!-- Solution Code -->
+        <h2>Solution Code (C++)</h2>
+        <pre class="leetcode-code"><code>
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> mp;
+        for (int i = 0; i < nums.size(); i++) {
+            int complement = target - nums[i];
+            if (mp.count(complement)) {
+                return {mp[complement], i};
+            }
+            mp[nums[i]] = i;
+        }
+        return {};
+    }
+};
+        </code></pre>
+    </div>
+</body>
+</html>
