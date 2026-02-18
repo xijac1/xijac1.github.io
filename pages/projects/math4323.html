@@ -1,99 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Obesity Risk Clustering Project</title>
+<div class="container-fluid projects-page page-container project-page">
+  <h1 class="titles">📊 Obesity Risk Clustering</h1>
 
-  <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; }
-    .container-fluid { max-width: 1200px; margin: 0 auto; padding: 20px; }
-    h1.titles { color: #28a745; text-align: center; margin-bottom: 40px; }
-    .section { margin-bottom: 40px; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    ul { padding-left: 20px; }
-    .btn { padding: 10px 20px; border-radius: 5px; text-decoration: none; }
-    img { max-width: 100%; height: auto; }
-  </style>
-</head>
-<body>
-  <div class="container-fluid projects-page" style="margin-top:60px;">
-    <h1 class="titles">📊 Obesity Risk Clustering</h1>
-
-    <!-- Project Info: Mapped from Introduction + Main Questions -->
-    <div class="section">
-      <h3>Overview</h3>
-      <p>
-        Obesity affects over 40.3% of US adults (CDC, 2021-2023), with medical costs exceeding $173 billion annually. This project analyzes a UCI dataset (2,111 individuals from Mexico, Peru, Colombia) with 16 features (age, height, weight, diet habits like vegetable consumption, physical activity) to perform unsupervised clustering for obesity risk.
-        <br><br>
-        Goal: Group individuals into distinct clusters based on lifestyle and health attributes aligning with known obesity risk categories using K-Means and Hierarchical Clustering.
-      </p>
-    </div>
-
-    <!-- Tech Stack: From Methodology -->
-    <div class="section">
-      <h3>Tech Stack</h3>
-      <ul>
-        <li>R (kmeans, hclust for clustering, silhouette for validation)</li>
-        <li>Data: Full dataset (no preprocessing needed), scaling for Euclidean distance</li>
-        <li>Visualization: Histograms, bar charts, scatterplot matrices, dendrograms</li>
-        <li>Tools: Gap statistic, elbow method, silhouette coefficient for optimal K</li>
-      </ul>
-    </div>
-
-    <!-- Features: From Data Analysis + EDA -->
-    <div class="section">
-      <h3>Key Features & Analysis</h3>
-      <ul>
-        <li><strong>Data Handling:</strong> 17 variables (16 features + obesity class). Mix of categorical (e.g., gender, smoking) & numerical (e.g., age 14-61, weight 39-173kg, FCVC vegetable freq., FAF activity hours).</li>
-        <li><strong>EDA Insights:</strong> Near-equal gender (slightly more males); mostly non-smokers. Weight right-skewed (peaks 65-70kg, 90-100kg); FCVC bimodal (moderate-high veggie intake); Age young adults (20-25 peak); FAF peaks at 0-2 hours (many inactive).</li>
-        <li><strong>Clustering Prep:</strong> Converted categoricals to numeric; scaled all features for equal weighting.</li>
-        <li><strong>Height-Weight:</strong> Positive linear relationship; Age-Weight slight positive trend.</li>
-      </ul>
-    </div>
-
-    <!-- Results: From Implementation + Validation -->
-    <div class="section">
-      <h3>Results</h3>
-      <p>
-        <strong>Optimal Clusters:</strong> K=10 selected via gap statistic, elbow method, and silhouette analysis for balanced, cohesive groups.
-        <br><br>
-        <strong>Model Comparison:</strong> K-Means faster with controlled K; Hierarchical provides dendrograms but slower for large data. Validated internally (silhouette coefficient), externally (post-hoc labels), and relatively (gap stats)—K-Means showed stronger performance.
-        <br><br>
-        Clusters reveal patterns in diet/activity aligning with obesity risks (e.g., low FAF + high weight in high-risk groups). Embed plots here (e.g., silhouette plot, K-Means visualization PNG from R).
-        <br><br>
-        Full report includes confusion in scatter matrices, histograms, and cluster visuals for deeper insights.
-      </p>
-    </div>
-
-    <!-- Buttons: Links to Full Report + Extras -->
-    <div style="text-align:center; margin-top:40px;">
-      <a href="/assets/certifications/pdf/Obesity-Final-Report.pdf" target="_blank" 
-         class="btn btn-outline-dark" style="margin:5px;">
-        📄 Full Technical Report
-      </a>
-      <a href="https://archive.ics.uci.edu/dataset/544/obesity+or+cvd+risk+classify+risk+level+based+on+demographic+details+and+lifestyle" target="_blank" 
-         class="btn btn-outline-primary" style="margin:5px;">
-        🔗 Dataset Source
-      </a>
-      <a href="https://www.cdc.gov/obesity/data/adult.html" target="_blank" 
-         class="btn btn-outline-info" style="margin:5px;">
-        📊 CDC Facts
-      </a>
-      <a href="https://github.com/yourusername/obesity-clustering-project" target="_blank" 
-         class="btn btn-outline-success" style="margin:5px;">
-        <i class="bi bi-github"></i> View Code on GitHub
-      </a>
-    </div>
-
-    <!-- Footer: Bibliography -->
-    <div class="section" style="margin-top: 50px; font-size: 0.9em; color: #6c757d;">
-      <h5>Bibliography</h5>
-      <ul>
-        <li>Deshpande, D. Estimation of obesity levels based on eating habits and physical condition. UCI Machine Learning Repository, 2019. <a href="https://doi.org/10.1016/j.dib.2019.104344">DOI</a>.</li>
-        <li>CDC. “Adult Obesity Facts.” <a href="https://www.cdc.gov/obesity/data/adult.html">Link</a>, 2024.</li>
-      </ul>
-    </div>
+  <div class="section project-section">
+    <h3>Overview</h3>
+    <p>
+      Obesity affects over 40.3% of US adults (CDC, 2021-2023), with medical costs exceeding $173 billion annually. This project analyzes a UCI dataset (2,111 individuals from Mexico, Peru, Colombia) with 16 features (age, height, weight, diet habits like vegetable consumption, physical activity) to perform unsupervised clustering for obesity risk.
+      <br><br>
+      Goal: Group individuals into distinct clusters based on lifestyle and health attributes aligning with known obesity risk categories using K-Means and Hierarchical Clustering.
+    </p>
   </div>
 
-</body>
-</html>
+  <div class="section project-section">
+    <h3>Tech Stack</h3>
+    <ul>
+      <li>R (kmeans, hclust for clustering, silhouette for validation)</li>
+      <li>Data: Full dataset (no preprocessing needed), scaling for Euclidean distance</li>
+      <li>Visualization: Histograms, bar charts, scatterplot matrices, dendrograms</li>
+      <li>Tools: Gap statistic, elbow method, silhouette coefficient for optimal K</li>
+    </ul>
+  </div>
+
+  <div class="section project-section">
+    <h3>Key Features & Analysis</h3>
+    <ul>
+      <li><strong>Data Handling:</strong> 17 variables (16 features + obesity class). Mix of categorical (e.g., gender, smoking) & numerical (e.g., age 14-61, weight 39-173kg, FCVC vegetable freq., FAF activity hours).</li>
+      <li><strong>EDA Insights:</strong> Near-equal gender (slightly more males); mostly non-smokers. Weight right-skewed (peaks 65-70kg, 90-100kg); FCVC bimodal (moderate-high veggie intake); Age young adults (20-25 peak); FAF peaks at 0-2 hours (many inactive).</li>
+      <li><strong>Clustering Prep:</strong> Converted categoricals to numeric; scaled all features for equal weighting.</li>
+      <li><strong>Height-Weight:</strong> Positive linear relationship; Age-Weight slight positive trend.</li>
+    </ul>
+  </div>
+
+  <div class="section project-section">
+    <h3>Results</h3>
+    <p>
+      <strong>Optimal Clusters:</strong> K=10 selected via gap statistic, elbow method, and silhouette analysis for balanced, cohesive groups.
+      <br><br>
+      <strong>Model Comparison:</strong> K-Means faster with controlled K; Hierarchical provides dendrograms but slower for large data. Validated internally (silhouette coefficient), externally (post-hoc labels), and relatively (gap stats)—K-Means showed stronger performance.
+      <br><br>
+      Clusters reveal patterns in diet/activity aligning with obesity risks (e.g., low FAF + high weight in high-risk groups). Embed plots here (e.g., silhouette plot, K-Means visualization PNG from R).
+      <br><br>
+      Full report includes confusion in scatter matrices, histograms, and cluster visuals for deeper insights.
+    </p>
+  </div>
+
+  <div class="btn-row btn-row--center project-actions">
+    <a href="/assets/certifications/pdf/Obesity-Final-Report.pdf" target="_blank" class="btn btn-outline-dark">
+      📄 Full Technical Report
+    </a>
+    <a href="https://archive.ics.uci.edu/dataset/544/obesity+or+cvd+risk+classify+risk+level+based+on+demographic+details+and+lifestyle" target="_blank" class="btn btn-outline-primary">
+      🔗 Dataset Source
+    </a>
+    <a href="https://www.cdc.gov/obesity/data/adult.html" target="_blank" class="btn btn-outline-info">
+      📊 CDC Facts
+    </a>
+    <a href="https://github.com/yourusername/obesity-clustering-project" target="_blank" class="btn btn-outline-success">
+      <i class="bi bi-github"></i> View Code on GitHub
+    </a>
+  </div>
+
+  <div class="section project-section project-bibliography">
+    <h5>Bibliography</h5>
+    <ul>
+      <li>Deshpande, D. Estimation of obesity levels based on eating habits and physical condition. UCI Machine Learning Repository, 2019. <a href="https://doi.org/10.1016/j.dib.2019.104344">DOI</a>.</li>
+      <li>CDC. “Adult Obesity Facts.” <a href="https://www.cdc.gov/obesity/data/adult.html">Link</a>, 2024.</li>
+    </ul>
+  </div>
+</div>

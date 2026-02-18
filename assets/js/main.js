@@ -44,6 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     initializeProjectFilter();
                 }
 
+                if (window.feather && typeof feather.replace === 'function') {
+                    feather.replace();
+                }
+
                 // Update active nav link (sidebar)
                 updateSidebarActive(page);
             })

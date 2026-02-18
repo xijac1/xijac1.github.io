@@ -1,133 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EcoScan: AI-Powered Recycling App</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-  <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f8f0; color: #333; }
-    .container-fluid { max-width: 1200px; margin: 0 auto; padding: 20px; }
-    h1.titles { color: #28a745; text-align: center; margin-bottom: 40px; font-weight: bold; }
-    .hero { text-align: center; margin-bottom: 40px; }
-    .hero img { max-width: 100%; height: auto; border-radius: 15px; box-shadow: 0 4px 20px rgba(40, 167, 69, 0.3); }
-    .section { margin-bottom: 40px; padding: 25px; background: white; border-radius: 15px; box-shadow: 0 2px 15px rgba(0,0,0,0.1); }
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .feature-item { text-align: center; padding: 15px; border: 1px solid #e9ecef; border-radius: 10px; }
-    .feature-item i { font-size: 2rem; color: #28a745; margin-bottom: 10px; }
-    .tech-stack ul { list-style: none; padding: 0; }
-    .tech-stack li { background: #e9ecef; margin: 10px 0; padding: 10px; border-radius: 5px; }
-    .screenshots { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .screenshot img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    .btn { padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; margin: 5px; }
-    .btn-primary { background: #28a745; color: white; }
-    .btn-outline-dark { border-color: #28a745; color: #28a745; }
-    .team { background: #d4edda; border-left: 5px solid #28a745; }
-    footer { text-align: center; margin-top: 50px; padding: 20px; background: #28a745; color: white; border-radius: 10px; }
-  </style>
-</head>
-<body>
-  <div class="container-fluid projects-page" style="margin-top:60px;">
-    <h1 class="titles">♻️ EcoScan: AI Recycling Coach</h1>
+<div class="container-fluid projects-page page-container project-page">
+  <h1 class="titles">♻️ EcoScan: AI Recycling Coach</h1>
 
-    <!-- Hero Demo Image -->
-    <div class="hero">
-      <img src="/assets/images/hero.svg" alt="EcoScan Hero Screenshot" 
-           style="max-width:8%; border-radius:15px; box-shadow:0 4px 20px rgba(40,167,69,0.3);">
-      <p class="mt-3"><em>Scan, Learn, Recycle</em></p>
-    </div>
+  <div class="hero">
+    <img src="/assets/images/hero.svg" alt="EcoScan Hero Screenshot" class="hero-image hero-image--small">
+    <p class="mt-3"><em>Scan, Learn, Recycle</em></p>
+  </div>
 
-    <!-- Overview -->
-    <div class="section">
-      <h3>🌍 Project Overview</h3>
-      <p>
-        EcoScan is a full-stack web app that leverages the Gemini 2.5 Flash API to educate users on recyclable materials via an AI-powered scanning system. We gamify recycling to boost engagement, turning everyday waste into rewarding habits with points, leaderboards, and impact tracking. Built to promote sustainability, it helps users reduce landfill waste one scan at a time.
-      </p>
-    </div>
+  <div class="section project-section">
+    <h3>🌍 Project Overview</h3>
+    <p>
+      EcoScan is a full-stack web app that leverages the Gemini 2.5 Flash API to educate users on recyclable materials via an AI-powered scanning system. We gamify recycling to boost engagement, turning everyday waste into rewarding habits with points, leaderboards, and impact tracking. Built to promote sustainability, it helps users reduce landfill waste one scan at a time.
+    </p>
+  </div>
 
-    <!-- Key Features -->
-    <div class="section">
-      <h3>✨ Key Features</h3>
-      <div class="features-grid">
-        <div class="feature-item">
-          <i class="bi bi-camera"></i>
-          <h5>Photo Analysis</h5>
-          <p>Classifies scanned items and delivers tailored disposal instructions.</p>
-        </div>
-        <div class="feature-item">
-          <i class="bi bi-trophy"></i>
-          <h5>Gamified Tracker</h5>
-          <p>Earn points for correct recycling and compete on community leaderboards.</p>
-        </div>
-        <div class="feature-item">
-          <i class="bi bi-geo-alt"></i>
-          <h5>Facility Locator</h5>
-          <p>Discover nearby recycling centers with easy directions via Geoapify.</p>
-        </div>
-        <div class="feature-item">
-          <i class="bi bi-graph-up"></i>
-          <h5>Personal History</h5>
-          <p>Review past scans and visualize your environmental impact over time.</p>
-        </div>
+  <div class="section project-section">
+    <h3>✨ Key Features</h3>
+    <div class="features-grid">
+      <div class="feature-item">
+        <i class="bi bi-camera"></i>
+        <h5>Photo Analysis</h5>
+        <p>Classifies scanned items and delivers tailored disposal instructions.</p>
       </div>
-    </div>
-
-    <!-- Tech Stack -->
-    <div class="section tech-stack">
-      <h3>🛠️ Tech Stack</h3>
-      <ul>
-        <li><strong>Frontend:</strong> React, TypeScript, TailwindCSS</li>
-        <li><strong>Backend:</strong> Node.js, Express.js</li>
-        <li><strong>APIs & Services:</strong> Firebase Authentication, Google Gemini (Flash 2.5), Geoapify</li>
-        <li><strong>Integrations:</strong> Twitter, LinkedIn, Facebook for social sharing</li>
-      </ul>
-    </div>
-
-    <!-- Demo Screenshots -->
-    <div class="section">
-      <h3>📱 App Demo</h3>
-      <p>Explore EcoScan in action through these screenshots:</p>
-      <div class="screenshots">
-        <div class="screenshot">
-          <img src="/assets/images/screenshot.png" alt="Scan Feature Screenshot">
-          <p><small>AI-Powered Item Scanner</small></p>
-        </div>
-        <div class="screenshot">
-          <img src="/assets/images/rank.png" alt="Leaderboard Screenshot">
-          <p><small>Gamified Leaderboard</small></p>
-        </div>
-        <div class="screenshot">
-          <img src="/assets/images/map.png" alt="Facility Locator Screenshot">
-          <p><small>Nearby Recycling Map</small></p>
-        </div>
+      <div class="feature-item">
+        <i class="bi bi-trophy"></i>
+        <h5>Gamified Tracker</h5>
+        <p>Earn points for correct recycling and compete on community leaderboards.</p>
       </div>
-    </div>
-
-    <!-- Team Shoutout -->
-    <div class="section team">
-      <h3>👥 Team & Thanks</h3>
-      <p>
-        Massive shoutout to my incredible teammates <strong>Sam Khudairi</strong>, <strong>Claudette Sanchez</strong>, and <strong>Carl Aguinaldo</strong> for their dedication and seamless collaboration from ideation to deployment!
-        <br><br>
-        Special thanks to the <strong>University of Houston</strong> for providing the resources and support that made this project a reality.
-      </p>
-    </div>
-
-    <!-- Action Buttons -->
-    <div style="text-align:center; margin: 40px 0;">
-      <a href="https://ecoscan-8a754.web.app/" target="_blank" class="btn btn-primary">
-        🚀 Launch EcoScan Live Demo
-      </a>
-      <a href="https://devpost.com/software/ecoscan-d5kfib" target="_blank" class="btn btn-outline-dark">
-        📄 Full Project Submission
-      </a>
-      <a href="https://github.com/S-khudairi/CODEREDASTRA" target="_blank" class="btn btn-outline-success">
-        <i class="bi bi-github"></i> View Source Code
-      </a>
+      <div class="feature-item">
+        <i class="bi bi-geo-alt"></i>
+        <h5>Facility Locator</h5>
+        <p>Discover nearby recycling centers with easy directions via Geoapify.</p>
+      </div>
+      <div class="feature-item">
+        <i class="bi bi-graph-up"></i>
+        <h5>Personal History</h5>
+        <p>Review past scans and visualize your environmental impact over time.</p>
+      </div>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+  <div class="section project-section tech-stack">
+    <h3>🛠️ Tech Stack</h3>
+    <ul>
+      <li><strong>Frontend:</strong> React, TypeScript, TailwindCSS</li>
+      <li><strong>Backend:</strong> Node.js, Express.js</li>
+      <li><strong>APIs & Services:</strong> Firebase Authentication, Google Gemini (Flash 2.5), Geoapify</li>
+      <li><strong>Integrations:</strong> Twitter, LinkedIn, Facebook for social sharing</li>
+    </ul>
+  </div>
+
+  <div class="section project-section">
+    <h3>📱 App Demo</h3>
+    <p>Explore EcoScan in action through these screenshots:</p>
+    <div class="screenshots">
+      <div class="screenshot">
+        <img src="/assets/images/screenshot.png" alt="Scan Feature Screenshot">
+        <p><small>AI-Powered Item Scanner</small></p>
+      </div>
+      <div class="screenshot">
+        <img src="/assets/images/rank.png" alt="Leaderboard Screenshot">
+        <p><small>Gamified Leaderboard</small></p>
+      </div>
+      <div class="screenshot">
+        <img src="/assets/images/map.png" alt="Facility Locator Screenshot">
+        <p><small>Nearby Recycling Map</small></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section project-section team">
+    <h3>👥 Team & Thanks</h3>
+    <p>
+      Massive shoutout to my incredible teammates <strong>Sam Khudairi</strong>, <strong>Claudette Sanchez</strong>, and <strong>Carl Aguinaldo</strong> for their dedication and seamless collaboration from ideation to deployment!
+      <br><br>
+      Special thanks to the <strong>University of Houston</strong> for providing the resources and support that made this project a reality.
+    </p>
+  </div>
+
+  <div class="btn-row btn-row--center project-actions">
+    <a href="https://ecoscan-8a754.web.app/" target="_blank" class="btn btn-primary">
+      🚀 Launch EcoScan Live Demo
+    </a>
+    <a href="https://devpost.com/software/ecoscan-d5kfib" target="_blank" class="btn btn-outline-dark">
+      📄 Full Project Submission
+    </a>
+    <a href="https://github.com/S-khudairi/CODEREDASTRA" target="_blank" class="btn btn-outline-success">
+      <i class="bi bi-github"></i> View Source Code
+    </a>
+  </div>
+</div>
