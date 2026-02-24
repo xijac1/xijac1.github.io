@@ -417,7 +417,8 @@ footer {
     background-color: #f8f9fa;
     border-right: 1px solid #e6ecf0;
     overflow-x: hidden;
-    transition: width 0.3s ease;
+    transition: width 0.24s ease;
+    will-change: width;
     z-index: 1050; /* Above content */
 }
 
@@ -462,6 +463,50 @@ footer {
 
 .sidebar:hover .link-text {
     display: inline;
+}
+
+.theme-toggle-nav {
+    margin-top: 8px;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.theme-toggle-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.theme-icon-toggle {
+    border: 1px solid #d1d5db;
+    background-color: #f8f9fa;
+    color: #f59e0b;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    transform: translateZ(0);
+}
+
+.theme-icon-toggle i {
+    font-size: 16px;
+}
+
+.theme-icon-toggle:hover {
+    background-color: #e6ecf0;
+}
+
+@media (min-width: 769px) {
+    .sidebar:not(:hover) .theme-toggle-wrap {
+        justify-content: center;
+    }
 }
 
 /* Sidebar always visible with icons on mobile */
@@ -555,6 +600,16 @@ footer {
         justify-content: center !important;
         align-items: center !important;
         height: 100% !important;
+    }
+
+    .theme-toggle-nav {
+        padding: 0 4px;
+        margin: 0;
+    }
+
+    .theme-icon-toggle {
+        width: 32px;
+        height: 32px;
     }
 
     .sidebar .nav-link {
@@ -1156,4 +1211,112 @@ footer {
         border-left: none;
         border-radius: 8px;
     }
+}
+
+body.dark-theme {
+    background-color: #0f172a;
+    color: #e2e8f0;
+}
+
+body.dark-theme .sidebar {
+    background-color: #111827;
+    border-color: #334155;
+}
+
+body.dark-theme .sidebar .nav-link {
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .sidebar .nav-link:hover {
+    background-color: #334155;
+}
+
+body.dark-theme #view-counter,
+body.dark-theme .time {
+    color: #cbd5e1 !important;
+}
+
+body.dark-theme .theme-icon-toggle {
+    background-color: #1f2937;
+    border-color: #475569;
+    color: #93c5fd;
+}
+
+body.dark-theme .theme-icon-toggle:hover {
+    background-color: #334155;
+}
+
+body.dark-theme .main-content,
+body.dark-theme .home,
+body.dark-theme .projects,
+body.dark-theme .quotes,
+body.dark-theme .contact,
+body.dark-theme .projects-page,
+body.dark-theme .leetcode-container,
+body.dark-theme .project-section,
+body.dark-theme .resume {
+    background-color: #121723 !important;
+    color: #e2e8f0 !important;
+    border-color: #334155 !important;
+}
+
+body.dark-theme .mainunit,
+body.dark-theme .quote-unit {
+    background-color: #242b3b !important;
+    color: #e2e8f0 !important;
+    border-color: #334155 !important;
+}
+
+body.dark-theme .mainunit .twopointtwo,
+body.dark-theme .quote-unit .twopointtwo,
+body.dark-theme .mainunit.certificate-card .certificate-content p,
+body.dark-theme .home-subtitle,
+body.dark-theme .home-intro,
+body.dark-theme .contact-lead,
+body.dark-theme .contact-links,
+body.dark-theme .project-bibliography,
+body.dark-theme .resume-contact a[href*="github.com"],
+body.dark-theme .resume-contact a[href^="mailto:"],
+body.dark-theme .resume-contact a[href^="tel:"] {
+    color: #cbd5e1 !important;
+}
+
+body.dark-theme .leetcode-code,
+body.dark-theme .quote-filter-bar,
+body.dark-theme .project-filter-bar,
+body.dark-theme .author-dropdown,
+body.dark-theme .type-dropdown,
+body.dark-theme .filter-btn,
+body.dark-theme .tech-stack li,
+body.dark-theme .feature-item,
+body.dark-theme .tag-badge,
+body.dark-theme .mainunit.certificate-card .divpic {
+    background-color: #121723 !important;
+    color: #e2e8f0 !important;
+    border-color: #334155 !important;
+}
+
+body.dark-theme .filter-btn.active,
+body.dark-theme .filter-btn:hover {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+}
+
+body.dark-theme a,
+body.dark-theme .view-cert,
+body.dark-theme .resume-contact a[href*="linkedin.com"] {
+    color: #93c5fd;
+}
+
+body.dark-theme footer {
+    border-top-color: #334155;
+}
+
+/* Dark mode: unify raised/bordered subpage cards */
+body.dark-theme .project-section,
+body.dark-theme .feature-item,
+body.dark-theme .tech-stack li,
+body.dark-theme .leetcode-code,
+body.dark-theme .mainunit.certificate-card .divpic {
+    background-color: #242b3b !important;
 }
