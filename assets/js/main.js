@@ -1,25 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.getElementById('main-content');
     const navButtons = document.querySelectorAll('.nav-link');
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeToggleIcon = themeToggle ? themeToggle.querySelector('i') : null;
     const themeStorageKey = 'site-theme';
 
-    function updateThemeIcon(theme) {
-        if (!themeToggleIcon) {
-            return;
-        }
+    function updateThemeControls(theme) {
         const isDarkTheme = theme === 'dark';
-        themeToggleIcon.classList.remove('bi-sun-fill', 'bi-moon-fill');
-        themeToggleIcon.classList.add(isDarkTheme ? 'bi-moon-fill' : 'bi-sun-fill');
-        themeToggle.setAttribute('aria-label', isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme');
-        themeToggle.setAttribute('title', isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme');
+        const toggles = document.querySelectorAll('[data-theme-toggle]');
+
+        toggles.forEach((toggleButton) => {
+            const icon = toggleButton.querySelector('i');
+            if (icon) {
+                icon.classList.remove('bi-sun-fill', 'bi-moon-fill');
+                icon.classList.add(isDarkTheme ? 'bi-moon-fill' : 'bi-sun-fill');
+            }
+
+            const actionLabel = isDarkTheme ? 'Light Mode' : 'Dark Mode';
+            const accessibilityLabel = isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme';
+            const labelNode = toggleButton.querySelector('[data-theme-label]');
+            if (labelNode) {
+                labelNode.textContent = actionLabel;
+            }
+
+            toggleButton.setAttribute('aria-label', accessibilityLabel);
+            toggleButton.setAttribute('title', accessibilityLabel);
+        });
     }
 
     function applyTheme(theme) {
         const isDarkTheme = theme === 'dark';
         document.body.classList.toggle('dark-theme', isDarkTheme);
-        updateThemeIcon(theme);
+        updateThemeControls(theme);
     }
 
     function getSavedTheme() {
@@ -32,14 +42,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     applyTheme(getSavedTheme());
 
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const isCurrentlyDark = document.body.classList.contains('dark-theme');
-            const nextTheme = isCurrentlyDark ? 'light' : 'dark';
-            localStorage.setItem(themeStorageKey, nextTheme);
-            applyTheme(nextTheme);
-        });
-    }
+    document.addEventListener('click', (event) => {
+        const toggleButton = event.target.closest('[data-theme-toggle]');
+        if (!toggleButton) {
+            return;
+        }
+
+        const isCurrentlyDark = document.body.classList.contains('dark-theme');
+        const nextTheme = isCurrentlyDark ? 'light' : 'dark';
+        localStorage.setItem(themeStorageKey, nextTheme);
+        applyTheme(nextTheme);
+    });
 
     // Function to update sidebar active icon based on current hash/page
     function updateSidebarActive(page) {
@@ -86,6 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (window.feather && typeof feather.replace === 'function') {
                     feather.replace();
                 }
+
+                updateThemeControls(getSavedTheme());
 
                 // Update active nav link (sidebar)
                 updateSidebarActive(page);
