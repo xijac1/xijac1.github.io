@@ -602,9 +602,8 @@ footer {
         height: 100% !important;
     }
 
-    .theme-toggle-nav {
-        padding: 0 4px;
-        margin: 0;
+    .sidebar .nav-item.theme-toggle-nav {
+        display: none !important;
     }
 
     .theme-icon-toggle {
@@ -640,6 +639,12 @@ footer {
 
     .main-content {
         padding-bottom: 80px !important;
+    }
+
+    .home .mobile-theme-toggle {
+        display: inline-flex !important;
+        align-items: center;
+        gap: 6px;
     }
 }
 
@@ -788,6 +793,10 @@ footer {
 
 .home .btn-row {
     justify-content: center;
+}
+
+.mobile-theme-toggle {
+    display: none;
 }
 
 .btn-row--center {
