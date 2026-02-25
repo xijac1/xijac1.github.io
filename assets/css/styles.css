@@ -758,6 +758,41 @@ footer {
     object-fit: cover;
 }
 
+.home-hero {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.home-cover-strip {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(100%, 900px);
+    height: 162px;
+    border-radius: 14px;
+    background-image: url('/assets/images/blacknwhite.jpeg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+.home-hero .profile-image {
+    margin-bottom: 0;
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .home-cover-strip {
+        height: 130px;
+        border-radius: 10px;
+    }
+}
+
 .home-title {
     font-size: 2.8rem;
 }
