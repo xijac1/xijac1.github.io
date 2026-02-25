@@ -26,10 +26,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function updateThemeLogos(theme) {
+        const isDarkTheme = theme === 'dark';
+        const collapsedLogo = document.querySelector('.collapsed-logo');
+        const expandedLogo = document.querySelector('.expanded-logo');
+
+        if (collapsedLogo) {
+            if (!collapsedLogo.dataset.lightSrc) {
+                collapsedLogo.dataset.lightSrc = collapsedLogo.getAttribute('src') || 'assets/images/logo.png';
+            }
+            collapsedLogo.src = isDarkTheme ? 'assets/images/darklogosmall.png' : collapsedLogo.dataset.lightSrc;
+        }
+
+        if (expandedLogo) {
+            if (!expandedLogo.dataset.lightSrc) {
+                expandedLogo.dataset.lightSrc = expandedLogo.getAttribute('src') || 'assets/images/extended-logo.png';
+            }
+            expandedLogo.src = isDarkTheme ? 'assets/images/darklogo_extended.png' : expandedLogo.dataset.lightSrc;
+        }
+    }
+
     function applyTheme(theme) {
         const isDarkTheme = theme === 'dark';
         document.body.classList.toggle('dark-theme', isDarkTheme);
         updateThemeControls(theme);
+        updateThemeLogos(theme);
     }
 
     function getSavedTheme() {
