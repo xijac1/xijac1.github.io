@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.getElementById('main-content');
     const navButtons = document.querySelectorAll('.nav-link');
     const themeStorageKey = 'site-theme';
+    let currentPage = null;
 
     function updateThemeControls(theme) {
         const isDarkTheme = theme === 'dark';
@@ -100,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(data => {
                 document.getElementById('dynamic-content').innerHTML = data;  // Load into sub-container
+                currentPage = page;
 
                 // Update browser history if needed
                 if (push) {
@@ -233,21 +235,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle browser back/forward buttons
     window.addEventListener('popstate', (event) => {
-        if (event.state && event.state.page) {
-            loadPage(event.state.page, false); // Don't push state again
+        const targetPage = (event.state && event.state.page)
+            || location.hash.replace('#', '')
+            || defaultPage;
+
+        if (targetPage !== currentPage) {
+            loadPage(targetPage, false); // Don't push state again
         }
+
+        updateSidebarActive(targetPage);
     });
 
     // Load default or current page on first load
     const defaultPage = 'pages/home.html';
     const initialHash = location.hash.replace('#', '');
     const initialPage = initialHash || defaultPage;
+    history.replaceState({ page: initialPage }, '', `#${initialPage}`);
     updateSidebarActive(initialPage);
     loadPage(initialPage, false); // Don't push state on first load
 
     // Listen for hash changes (user navigates via browser or anchor)
     window.addEventListener('hashchange', function() {
         const hashPage = location.hash.replace('#', '') || defaultPage;
+        if (hashPage !== currentPage) {
+            loadPage(hashPage, false);
+        }
         updateSidebarActive(hashPage);
     });
 });
