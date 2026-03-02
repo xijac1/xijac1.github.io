@@ -774,7 +774,7 @@ footer {
     width: min(100%, 900px);
     height: 162px;
     border-radius: 14px;
-    background-image: url('/assets/images/blacknwhite.jpeg');
+    background-image: url('/assets/images/blacknwhite.jpg');
     background-size: cover;
     background-position: center;
     z-index: 0;
