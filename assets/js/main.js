@@ -2,7 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.getElementById('main-content');
     const navButtons = document.querySelectorAll('.nav-link');
     const themeStorageKey = 'site-theme';
+    const SUPABASE_URL = 'https://nxpdunqdgjcwavohmgrk.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_EFRsYxOQ6tiCySwac3laUQ_Buj0Us9M';
     let currentPage = null;
+
+    let supabaseClient = null;
+    if (window.supabase && typeof window.supabase.createClient === 'function') {
+        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    }
 
     function updateThemeControls(theme) {
         const isDarkTheme = theme === 'dark';
@@ -267,6 +274,63 @@ document.addEventListener('DOMContentLoaded', () => {
             if (page) {
                 loadPage(page);
             }
+        }
+    });
+
+    document.addEventListener('submit', async (event) => {
+        const form = event.target;
+        if (!form || form.id !== 'contact-form') {
+            return;
+        }
+
+        event.preventDefault();
+
+        const statusEl = document.getElementById('contact-status');
+        const submitButton = form.querySelector('button[type="submit"]');
+
+        const payload = {
+            name: document.getElementById('name')?.value?.trim(),
+            email: document.getElementById('email')?.value?.trim(),
+            message: document.getElementById('message')?.value?.trim(),
+        };
+
+        if (!payload.name || !payload.email || !payload.message) {
+            if (statusEl) {
+                statusEl.textContent = 'Please fill out all fields.';
+            }
+            return;
+        }
+
+        if (!supabaseClient) {
+            if (statusEl) {
+                statusEl.textContent = 'Message service unavailable. Please try again later.';
+            }
+            return;
+        }
+
+        if (submitButton) {
+            submitButton.disabled = true;
+        }
+        if (statusEl) {
+            statusEl.textContent = 'Sending message...';
+        }
+
+        const { error } = await supabaseClient.from('messages').insert(payload);
+
+        if (submitButton) {
+            submitButton.disabled = false;
+        }
+
+        if (error) {
+            if (statusEl) {
+                statusEl.textContent = 'Failed to send. Please try again.';
+            }
+            return;
+        }
+
+        form.reset();
+        if (statusEl) {
+            statusEl.textContent = 'Message sent successfully.';
         }
     });
 
