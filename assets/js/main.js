@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 return response.text();
             })
-            .then(data => {
+            .then(async data => {
                 document.getElementById('dynamic-content').innerHTML = data;  // Load into sub-container
                 currentPage = page;
 
@@ -112,10 +112,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     startClock();
                 }
 
-                // Initialize filters based on page
+                // Load DB-driven content + initialize filters based on page
                 if (page === 'pages/quotes.html') {
+                    if (window.contentData && typeof window.contentData.fetchQuotes === 'function' && typeof window.contentData.renderQuotes === 'function') {
+                        const quotes = await window.contentData.fetchQuotes();
+                        window.contentData.renderQuotes(quotes);
+                    }
                     initializeQuoteFilter();
                 } else if (page === 'pages/projects.html') {
+                    if (window.contentData && typeof window.contentData.fetchPortfolioItems === 'function' && typeof window.contentData.renderPortfolio === 'function') {
+                        const items = await window.contentData.fetchPortfolioItems();
+                        window.contentData.renderPortfolio(items);
+                    }
                     initializeProjectFilter();
                 }
 
@@ -140,6 +148,33 @@ document.addEventListener('DOMContentLoaded', () => {
         const quoteUnits = document.querySelectorAll('.quote-unit');
 
         if (filterDropdown) {
+            const uniqueAuthors = Array.from(new Set(
+                Array.from(quoteUnits)
+                    .map(unit => unit.getAttribute('data-author'))
+                    .filter(Boolean)
+            ));
+
+            const currentValue = filterDropdown.value || 'all';
+            filterDropdown.innerHTML = '';
+
+            const allOption = document.createElement('option');
+            allOption.value = 'all';
+            allOption.textContent = 'All Authors';
+            filterDropdown.appendChild(allOption);
+
+            uniqueAuthors.forEach(author => {
+                const option = document.createElement('option');
+                option.value = author;
+                option.textContent = author;
+                filterDropdown.appendChild(option);
+            });
+
+            if (Array.from(filterDropdown.options).some(option => option.value === currentValue)) {
+                filterDropdown.value = currentValue;
+            } else {
+                filterDropdown.value = 'all';
+            }
+
             filterDropdown.addEventListener('change', () => {
                 const selectedAuthor = filterDropdown.value;
                 let visibleIndex = 0;
@@ -155,6 +190,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
             });
+
+            filterDropdown.dispatchEvent(new Event('change'));
         }
     }
 
