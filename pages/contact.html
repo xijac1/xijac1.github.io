@@ -1,35 +1,39 @@
 <div class="container-fluid contact page-container">
   <h1 class="titles">Contact Me</h1>
   <p class="contact-lead">
-    Feel free to reach out via email, phone, or connect with me on my social profiles.
+    Feel free to reach out via email, or connect with me with the form below.
   </p>
 
   <div class="resume-contact contact-links">
     <a href="mailto:Julioamaya127@gmail.com"><i class="bi bi-envelope"></i> Julioamaya127@gmail.com</a> | <br class="mobile-break">
-    <a href="tel:8323412721"><i class="bi bi-telephone"></i> (832)-341-2721</a> | <br>
+    
     <a href="https://xijac1.github.io/#pages/projects.html" target="_blank"><i class="bi bi-globe"></i> Portfolio</a> |
     <a href="https://github.com/xijac1" target="_blank"><i class="bi bi-github"></i> GitHub</a>
   </div>
 
   <hr class="section-divider">
 
-  <p>The form below does not actually send messages for now. Please use the contact information above to reach me.</p>
+  <p>Send me a message below and I will get back to you as soon as possible.</p>
 
   <div class="content-container">
-    <form>
+    <form id="contact-form">
       <div class="mb-3">
         <label for="name" class="form-label">Your Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Enter your name">
+        <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">Your Email</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
       </div>
       <div class="mb-3">
         <label for="message" class="form-label">Message</label>
-        <textarea class="form-control" id="message" rows="5" placeholder="Write your message"></textarea>
+        <textarea class="form-control" id="message" rows="5" placeholder="Write your message" required></textarea>
+      </div>
+      <div class="mb-3">
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAACm-K78E91jTItX0"></div>
       </div>
       <button type="submit" class="btn btn-outline-primary"><i class="bi bi-send"></i> Send</button>
     </form>
+    <p id="contact-status" class="mt-3" aria-live="polite"></p>
   </div>
 </div>
