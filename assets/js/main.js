@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeStorageKey = 'site-theme';
     const SUPABASE_URL = 'https://nxpdunqdgjcwavohmgrk.supabase.co';
     const SUPABASE_ANON_KEY = 'sb_publishable_EFRsYxOQ6tiCySwac3laUQ_Buj0Us9M';
+    const SUBMIT_CONTACT_URL = 'https://nxpdunqdgjcwavohmgrk.functions.supabase.co/submit-contact';
     let currentPage = null;
 
     let supabaseClient = null;
@@ -93,6 +94,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function initializeTurnstileWidget() {
+        const widgetContainer = document.querySelector('#contact-form .cf-turnstile');
+        if (!widgetContainer || !window.turnstile || typeof window.turnstile.render !== 'function') {
+            return;
+        }
+
+        if (widgetContainer.dataset.rendered === 'true') {
+            return;
+        }
+
+        const widgetId = window.turnstile.render(widgetContainer);
+        widgetContainer.dataset.rendered = 'true';
+        widgetContainer.dataset.widgetId = String(widgetId);
+    }
+
     // Function to load and display a page
     function loadPage(page, push = true) {
         if (typeof stopClock === 'function') {
@@ -139,6 +155,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 updateThemeControls(getSavedTheme());
+
+                if (page === 'pages/contact.html') {
+                    initializeTurnstileWidget();
+                }
 
                 // Update active nav link (sidebar)
                 updateSidebarActive(page);
@@ -292,6 +312,8 @@ document.addEventListener('DOMContentLoaded', () => {
             name: document.getElementById('name')?.value?.trim(),
             email: document.getElementById('email')?.value?.trim(),
             message: document.getElementById('message')?.value?.trim(),
+            captcha_token: document.querySelector('[name="cf-turnstile-response"]')?.value?.trim() || null,
+            submitted_at: new Date().toISOString(),
         };
 
         if (!payload.name || !payload.email || !payload.message) {
@@ -301,9 +323,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        if (!supabaseClient) {
+        if (!payload.captcha_token) {
             if (statusEl) {
-                statusEl.textContent = 'Message service unavailable. Please try again later.';
+                statusEl.textContent = 'Please complete the CAPTCHA before submitting.';
             }
             return;
         }
@@ -315,20 +337,53 @@ document.addEventListener('DOMContentLoaded', () => {
             statusEl.textContent = 'Sending message...';
         }
 
-        const { error } = await supabaseClient.from('messages').insert(payload);
+        let response;
+        let responseBody = null;
+
+        try {
+            response = await fetch(SUBMIT_CONTACT_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
+
+            try {
+                responseBody = await response.json();
+            } catch (error) {
+                responseBody = null;
+            }
+        } catch (error) {
+            if (submitButton) {
+                submitButton.disabled = false;
+            }
+            if (statusEl) {
+                statusEl.textContent = 'Failed to send. Please check your connection and try again.';
+            }
+            return;
+        }
 
         if (submitButton) {
             submitButton.disabled = false;
         }
 
-        if (error) {
+        if (!response.ok) {
             if (statusEl) {
-                statusEl.textContent = 'Failed to send. Please try again.';
+                statusEl.textContent =
+                    responseBody?.error || 'Failed to send. Please try again.';
             }
             return;
         }
 
         form.reset();
+
+        const widgetContainer = document.querySelector('#contact-form .cf-turnstile');
+        const widgetId = widgetContainer?.dataset?.widgetId;
+        if (widgetId && window.turnstile && typeof window.turnstile.reset === 'function') {
+            window.turnstile.reset(widgetId);
+        }
+
         if (statusEl) {
             statusEl.textContent = 'Message sent successfully.';
         }
