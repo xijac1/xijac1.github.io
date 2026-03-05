@@ -6,3 +6,5 @@ admin-interface-plan.md
 supabase-content-migration-plan.md
 supabase-contact-resend-plan.md
 supabase-security-hardening-plan.md
+# Supabase local temp/state
+supabase/.temp/
