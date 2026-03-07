@@ -92,7 +92,7 @@ footer {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    overflow-x: auto;
+    overflow-x: visible;
     word-wrap: break-word;
 }
 
@@ -728,6 +728,11 @@ footer {
     margin-right: auto;
 }
 
+/* Let the home hero banner span the full content area width. */
+.home.page-container--narrow {
+    max-width: 100%;
+}
+
 .page-title {
     margin-bottom: 10px;
 }
@@ -760,36 +765,40 @@ footer {
 
 .home-hero {
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+    height: 230px;
+    margin-bottom: 24px;
 }
 
 .home-cover-strip {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: min(100%, 900px);
-    height: 162px;
-    border-radius: 14px;
-    background-image: url('/assets/images/blacknwhite.jpg');
+    position: relative;
+    width: calc(100% + 80px);
+    height: 110%;
+    margin-left: -40px;
+    border-radius: 0;
+    background-image: url('/assets/images/PosterImage.png');
     background-size: cover;
     background-position: center;
     z-index: 0;
 }
 
 .home-hero .profile-image {
-    margin-bottom: 0;
-    position: relative;
+    margin: 0;
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 1;
 }
 
 @media (max-width: 768px) {
+    .home-hero {
+        height: 172px;
+    }
+
     .home-cover-strip {
-        height: 130px;
-        border-radius: 10px;
+        width: calc(100% + 40px);
+        margin-left: -20px;
+        border-radius: 0;
     }
 }
 
