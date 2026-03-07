@@ -109,6 +109,62 @@ document.addEventListener('DOMContentLoaded', () => {
         widgetContainer.dataset.widgetId = String(widgetId);
     }
 
+    function observeHomeResumeTransition(homePage, resumeShell) {
+        if (!homePage || !resumeShell || homePage.dataset.resumeObserverAttached === 'true') {
+            return;
+        }
+
+        const anchor = resumeShell.querySelector('.home-resume-anchor') || resumeShell;
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    homePage.classList.toggle('home-showing-resume', entry.isIntersecting);
+                });
+            },
+            {
+                root: null,
+                threshold: 0,
+                rootMargin: '-17% 0px -35% 0px',
+            }
+        );
+
+        observer.observe(anchor);
+        homePage.dataset.resumeObserverAttached = 'true';
+    }
+
+    async function initializeHomeEmbeddedResume() {
+        const homePage = document.querySelector('[data-home-page]');
+        const resumeShell = document.getElementById('home-resume-shell');
+        const resumeContainer = document.getElementById('home-resume-embed');
+
+        if (!homePage || !resumeShell || !resumeContainer) {
+            return;
+        }
+
+        if (resumeContainer.dataset.loaded === 'true') {
+            observeHomeResumeTransition(homePage, resumeShell);
+            return;
+        }
+
+        try {
+            const response = await fetch('pages/resume.html');
+            if (!response.ok) {
+                throw new Error('Resume page not found');
+            }
+
+            const html = await response.text();
+            const parsedDoc = new DOMParser().parseFromString(html, 'text/html');
+            const resumeMarkup = parsedDoc.body ? parsedDoc.body.innerHTML : html;
+
+            resumeContainer.innerHTML = resumeMarkup;
+            resumeContainer.dataset.loaded = 'true';
+            observeHomeResumeTransition(homePage, resumeShell);
+        } catch (error) {
+            resumeContainer.innerHTML = '<p class="home-resume-loading">Unable to load resume right now. Please open the <a href="#pages/resume.html" class="home-nav-link" data-page="pages/resume.html">Resume page</a>.</p>';
+            console.error(error);
+        }
+    }
+
     // Function to load and display a page
     function loadPage(page, push = true) {
         if (typeof stopClock === 'function') {
@@ -155,6 +211,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 updateThemeControls(getSavedTheme());
+
+                if (page === 'pages/home.html') {
+                    await initializeHomeEmbeddedResume();
+                }
 
                 if (page === 'pages/contact.html') {
                     initializeTurnstileWidget();
