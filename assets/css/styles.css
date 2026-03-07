@@ -766,7 +766,7 @@ footer {
 .home-hero {
     position: relative;
     height: 230px;
-    margin-bottom: 24px;
+    margin-bottom: 70px;
 }
 
 .home-cover-strip {
@@ -857,7 +857,7 @@ footer {
     font-size: 1.15rem;
     line-height: 1.9;
     color: #222;
-    max-width: none;
+    max-width: 1000px;
     margin: 0 auto 26px;
 }
 
@@ -866,7 +866,7 @@ footer {
 }
 
 .btn-row {
-    margin-top: 25px;
+    margin-top: 34px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -874,6 +874,11 @@ footer {
 
 .home .btn-row {
     justify-content: center;
+    margin-top: 0;
+}
+
+.home .home-intro {
+    margin-bottom: 60px;
 }
 
 .home .btn-row .btn {
