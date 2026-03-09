@@ -670,6 +670,76 @@ footer {
 .resume-contact a[href^="mailto:"] { color: #000000; }      /* Email red */
 .resume-contact a[href^="tel:"] { color: #000000; }         /* Phone green */
 
+.resume-project-link {
+    display: block;
+    position: relative;
+    padding: 10px 12px;
+    margin: -2px -12px;
+    border-radius: 10px;
+    color: inherit;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.resume-preview-enabled {
+    overflow: visible;
+}
+
+.resume-project-link:hover,
+.resume-project-link:focus-visible {
+    background-color: #edf4fb;
+    color: #111;
+}
+
+.resume-project-link:focus-visible {
+    outline: 2px solid #0077b5;
+    outline-offset: 2px;
+}
+
+.resume-project-title {
+    display: inline-block;
+}
+
+.resume-project-preview {
+    position: absolute;
+    top: 50%;
+    right: -152px;
+    width: 132px;
+    height: 92px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #dbe5f1;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+    background-color: #fff;
+    opacity: 0;
+    transform: translateY(-50%) scale(0.96);
+    transform-origin: right center;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    pointer-events: none;
+}
+
+.resume-project-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.resume-project-link:hover .resume-project-preview,
+.resume-project-link:focus-visible .resume-project-preview {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+}
+
+@media (max-width: 900px) {
+    .resume-project-link {
+        padding-right: 12px;
+    }
+
+    .resume-project-preview {
+        display: none;
+    }
+}
+
 #view-counter {
     top: 1.5rem;
     right: auto;
