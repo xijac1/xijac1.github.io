@@ -132,6 +132,19 @@ document.addEventListener('DOMContentLoaded', () => {
         homePage.dataset.resumeObserverAttached = 'true';
     }
 
+    function resetViewportScroll() {
+        // Support both document scrolling and potential scrollable content wrappers.
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+        if (mainContent) {
+            mainContent.scrollTop = 0;
+        }
+
+        const dynamicContent = document.getElementById('dynamic-content');
+        if (dynamicContent) {
+            dynamicContent.scrollTop = 0;
+        }
+    }
+
     async function initializeHomeEmbeddedResume() {
         const homePage = document.querySelector('[data-home-page]');
         const resumeShell = document.getElementById('home-resume-shell');
@@ -181,6 +194,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(async data => {
                 document.getElementById('dynamic-content').innerHTML = data;  // Load into sub-container
                 currentPage = page;
+
+                resetViewportScroll();
 
                 // Update browser history if needed
                 if (push) {
