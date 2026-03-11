@@ -669,7 +669,17 @@ footer {
     }
 
     .sidebar .nav-item.theme-toggle-nav {
-        display: none !important;
+        margin-top: 0;
+        margin-bottom: 8px;
+        margin-left: 9px;
+        height: 100%;
+        width: auto;
+        flex: 0 0 auto !important;
+    }
+
+    .sidebar .theme-toggle-wrap {
+        height: 100%;
+        width: auto;
     }
 
     .theme-icon-toggle {
@@ -707,11 +717,6 @@ footer {
         padding-bottom: 80px !important;
     }
 
-    .home .mobile-theme-toggle {
-        display: inline-flex !important;
-        align-items: center;
-        gap: 6px;
-    }
 }
 
 .resume-contact a {
@@ -1020,10 +1025,6 @@ footer {
 .home .btn-row .btn {
     min-width: 170px;
     padding: 0.7rem 1.1rem;
-}
-
-.mobile-theme-toggle {
-    display: none;
 }
 
 .btn-row--center {
