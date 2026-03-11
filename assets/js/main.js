@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
             resumeContainer.dataset.loaded = 'true';
             observeHomeResumeTransition(homePage, resumeShell);
         } catch (error) {
-            resumeContainer.innerHTML = '<p class="home-resume-loading">Unable to load resume right now. Please open the <a href="#pages/resume.html" class="home-nav-link" data-page="pages/resume.html">Resume page</a>.</p>';
+            resumeContainer.innerHTML = '<p class="home-resume-loading">Unable to load career summary right now. Please open the <a href="#pages/resume.html" class="home-nav-link" data-page="pages/resume.html">Career page</a>.</p>';
             console.error(error);
         }
     }
