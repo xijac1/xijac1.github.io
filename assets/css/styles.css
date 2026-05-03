@@ -1027,31 +1027,6 @@ footer {
     color: #0077b5;
 }
 
-.btn-row {
-    margin-top: 34px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.home .btn-row {
-    justify-content: center;
-    margin-top: 0;
-}
-
-.home .home-intro {
-    margin-bottom: 60px;
-}
-
-.home .btn-row .btn {
-    min-width: 170px;
-    padding: 0.7rem 1.1rem;
-}
-
-.btn-row--center {
-    justify-content: center;
-    text-align: center;
-}
 
 .contact-lead,
 .contact-links {
