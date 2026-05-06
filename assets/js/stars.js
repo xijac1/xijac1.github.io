@@ -54,6 +54,11 @@
             return;
         }
 
+        const prevWidth = state.width || width;
+        const prevHeight = state.height || height;
+        const scaleX = width / prevWidth;
+        const scaleY = height / prevHeight;
+
         state.width = width;
         state.height = height;
 
@@ -64,8 +69,20 @@
         canvas.style.height = `${height}px`;
         ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
 
+        if (state.stars.length) {
+            for (const star of state.stars) {
+                star.x *= scaleX;
+                star.y *= scaleY;
+            }
+        }
+
         const targetCount = Math.max(80, Math.floor(width * height * state.density));
-        state.stars = Array.from({ length: targetCount }, createStar);
+        if (state.stars.length < targetCount) {
+            const toAdd = targetCount - state.stars.length;
+            state.stars.push(...Array.from({ length: toAdd }, createStar));
+        } else if (state.stars.length > targetCount) {
+            state.stars.length = targetCount;
+        }
     }
 
     function drawBackground() {
