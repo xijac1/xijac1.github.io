@@ -22,6 +22,15 @@ body {
     background-color: #ffffff;
     color: #000000;
     /* font-family: 'Courier New', Courier, monospace; */
+    position: relative;
+    overflow-x: hidden;
+}
+
+.starfield {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .offcanvas-title {
@@ -71,6 +80,8 @@ body {
     padding-left: 96px; /* Accounts for detached sidebar left offset */
     min-height: 100vh;
     font-family: 'Courier New', Courier, monospace;
+    position: relative;
+    z-index: 1;
 }
 
 footer {
@@ -78,6 +89,8 @@ footer {
     text-align: center;
     width: 100%;
     border-top: 1px solid #e6ecf0;
+    position: relative;
+    z-index: 1;
 }
 
 .home {
@@ -85,7 +98,7 @@ footer {
     font-size: 17px;
     line-height: 1.6;
     color: #333;
-    background-color: #ffffff;
+    /* background-color: rgba(255, 255, 255, 0.82); */
     padding: 20px;
     border-radius: 8px;
     margin: 20px 0;
@@ -101,7 +114,7 @@ footer {
     font-size: 17px;
     line-height: 1.6;
     color: #333;
-    background-color: #ffffff;
+    /* background-color: rgba(255, 255, 255, 0.82); */
     padding: 40px;
     border-radius: 8px;
     margin: 20px 0;
@@ -116,7 +129,7 @@ footer {
     font-size: 15px;
     line-height: 1.6;
     color: #333;
-    background-color: #ffffff;
+    /* background-color: rgba(255, 255, 255, 0.82);  */
     padding: 40px;
     border-radius: 8px;
     margin: 20px 0;
@@ -131,7 +144,7 @@ footer {
     font-size: 15px;
     line-height: 1.6;
     color: #333;
-    background-color: #f9f9f9;
+    background-color: rgba(249, 249, 249, 0.77);
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -168,7 +181,7 @@ footer {
     font-size: 17px;
     line-height: 1.6;
     color: #333;
-    background-color: #ffffff;
+    /* background-color: rgba(255, 255, 255, 0.88); */
     padding: 40px;
     border-radius: 8px;
     margin: 20px 0;
@@ -848,7 +861,7 @@ footer {
     font-size: 17px;
     line-height: 1.6;
     color: #333;
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.82);
     padding: 20px;
     border-radius: 8px;
     margin: 20px 0;
@@ -1071,7 +1084,7 @@ footer {
 .project-section {
     margin-bottom: 40px;
     padding: 25px;
-    background: white;
+    background: rgba(255, 255, 255, 0.84);
     border-radius: 15px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
@@ -1140,7 +1153,7 @@ footer {
     font-size: 16px;
     line-height: 1.6;
     color: #333;
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.82);
     padding: 40px;
     border-radius: 8px;
     margin: 20px auto;
@@ -1488,14 +1501,21 @@ body.dark-theme .projects-page,
 body.dark-theme .leetcode-container,
 body.dark-theme .project-section,
 body.dark-theme .resume {
-    background-color: #121723 !important;
     color: #e2e8f0 !important;
     border-color: #334155 !important;
 }
 
+body.dark-theme .projects-page,
+body.dark-theme .project-section {
+    background-color: rgba(16, 20, 30, 0.75) !important;
+}
+body.dark-theme .resume {
+    background-color: rgba(16, 20, 30, 0.75) !important;
+}
+
 body.dark-theme .mainunit,
 body.dark-theme .quote-unit {
-    background-color: #242b3b !important;
+    background-color: rgba(16, 20, 30, 0.75) !important;
     color: #e2e8f0 !important;
     border-color: #334155 !important;
 }
@@ -1528,7 +1548,7 @@ body.dark-theme .tech-stack li,
 body.dark-theme .feature-item,
 body.dark-theme .tag-badge,
 body.dark-theme .mainunit.certificate-card .divpic {
-    background-color: #121723 !important;
+    background-color: rgba(16, 20, 30, 0.75) !important;
     color: #e2e8f0 !important;
     border-color: #334155 !important;
 }
@@ -1555,5 +1575,5 @@ body.dark-theme .feature-item,
 body.dark-theme .tech-stack li,
 body.dark-theme .leetcode-code,
 body.dark-theme .mainunit.certificate-card .divpic {
-    background-color: #242b3b !important;
+    background-color: rgba(16, 20, 30, 0.75) !important;
 }
