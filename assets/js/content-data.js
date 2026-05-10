@@ -128,6 +128,26 @@
         return card;
     }
 
+    function buildComingSoonCard(item) {
+        const card = createElement('div', 'mainunit coming-soon-card');
+        card.setAttribute('data-type', 'project');
+
+        const titleWrapper = createElement('div', 'onepointone');
+        const titleHeading = createElement('h4');
+        titleHeading.textContent = 'Coming Soon';
+        titleWrapper.appendChild(titleHeading);
+
+        const body = createElement('div', 'twopointtwo');
+        const idea = createElement('p');
+        idea.textContent = item.description || item.title || '';
+        body.appendChild(idea);
+
+        card.appendChild(titleWrapper);
+        card.appendChild(body);
+
+        return card;
+    }
+
     function buildCourseCard(item) {
         const card = createElement('div', 'mainunit course-card');
         card.setAttribute('data-type', 'course');
@@ -202,21 +222,36 @@
 
         container.innerHTML = '';
 
+        const projects = [];
+        const comingSoon = [];
+        const courses = [];
+        const certificates = [];
+
         items.forEach((item) => {
             if (item.item_type === 'project') {
-                container.appendChild(buildProjectCard(item));
+                projects.push(item);
+                return;
+            }
+
+            if (item.item_type === 'coming_soon') {
+                comingSoon.push(item);
                 return;
             }
 
             if (item.item_type === 'course') {
-                container.appendChild(buildCourseCard(item));
+                courses.push(item);
                 return;
             }
 
             if (item.item_type === 'certificate') {
-                container.appendChild(buildCertificateCard(item));
+                certificates.push(item);
             }
         });
+
+        projects.forEach((item) => container.appendChild(buildProjectCard(item)));
+        comingSoon.forEach((item) => container.appendChild(buildComingSoonCard(item)));
+        courses.forEach((item) => container.appendChild(buildCourseCard(item)));
+        certificates.forEach((item) => container.appendChild(buildCertificateCard(item)));
 
         if (window.feather && typeof window.feather.replace === 'function') {
             window.feather.replace();

@@ -253,6 +253,23 @@ footer {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.mainunit.coming-soon-card {
+    background-color: #e6e6e6;
+    color: #666666;
+    border: 1px dashed #c2c2c2;
+    cursor: default;
+}
+
+.mainunit.coming-soon-card h4,
+.mainunit.coming-soon-card p {
+    color: #666666;
+}
+
+.mainunit.coming-soon-card .onepointone {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 .mainunit:hover {
     transform: translateY(-8px) scale(1.03);
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
