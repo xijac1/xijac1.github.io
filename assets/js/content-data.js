@@ -22,6 +22,11 @@
         return element;
     }
 
+    function stripCompletedPrefix(s) {
+        if (!s) return '';
+        return s.replace(/^\s*Completed:\s*/i, '').trim();
+    }
+
     async function fetchQuotes() {
         const { data, error } = await client
             .from('quotes')
@@ -132,6 +137,8 @@
         const card = createElement('div', 'mainunit course-card');
         card.setAttribute('data-type', 'course');
 
+        // No top logo here; logos are rendered inside the tag badge instead.
+
         const titleWrapper = createElement('div', 'onepointone');
         const titleHeading = createElement('h4');
         titleHeading.textContent = item.title || '';
@@ -144,9 +151,25 @@
 
         const metaRow = createElement('div', 'card-meta-row');
         const tagBadge = createElement('span', 'tag-badge');
-        tagBadge.textContent = item.tag || '';
+        const rawTagText = item.tag || '';
+        const tagText = stripCompletedPrefix(rawTagText);
+        if (tagText.toLowerCase().includes('university of houston')) {
+            tagBadge.className = 'tag-badge icon-only';
+            tagBadge.setAttribute('aria-label', tagText);
+            const logo = createElement('img');
+            logo.className = 'tag-school-logo';
+            logo.src = '/assets/images/uh2.png';
+            logo.alt = '';
+            logo.loading = 'lazy';
+            tagBadge.appendChild(logo);
+            const sr = createElement('span', 'sr-only');
+            sr.textContent = tagText;
+            tagBadge.appendChild(sr);
+        } else {
+            tagBadge.textContent = tagText;
+        }
         const dateText = createElement('small', 'text-muted');
-        dateText.textContent = item.date_label || '';
+        dateText.textContent = stripCompletedPrefix(item.date_label || '');
         metaRow.appendChild(tagBadge);
         metaRow.appendChild(dateText);
 
