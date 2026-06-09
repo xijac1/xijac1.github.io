@@ -1289,6 +1289,11 @@ footer {
         padding: 6px 12px; /* Smaller padding for mobile */
         font-size: 12px; /* Smaller font for mobile */
     }
+
+    .mainunit.course-card .course-logo {
+        max-width: 78px;
+        height: 22px;
+    }
 }
 
 /* ----- Portfolio variant styles ----- */
@@ -1320,6 +1325,51 @@ footer {
     justify-content: space-between;
     min-height: 140px;
 }
+.tag-badge {
+    display: inline-block;
+    background: #e9f5ff;
+    color: #0d6efd;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.tag-badge .tag-school-logo {
+    display: inline-block;
+    height: 16px;
+    width: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Icon-only tag style */
+.tag-badge.icon-only {
+    padding: 6px;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+.tag-badge.icon-only .tag-school-logo {
+    margin-right: 0;
+    height: 18px;
+}
+
+/* Screen-reader only helper */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
 .mainunit.course-card .onepointone { margin-bottom: 6px; font-size: 17px; }
 .mainunit.course-card .twopointtwo { color: #444; }
 
@@ -1347,16 +1397,6 @@ footer {
 }
 
 /* tag badge style (small pill for provider / language) */
-.tag-badge {
-    display: inline-block;
-    background: #e9f5ff;
-    color: #0d6efd;
-    padding: 4px 8px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 600;
-}
-
 /* view certificate link */
 .view-cert {
     display: inline-block;
