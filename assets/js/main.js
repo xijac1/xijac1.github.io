@@ -235,11 +235,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     initializeTurnstileWidget();
                 }
 
-                if (window.heartDiseaseShowcase && typeof window.heartDiseaseShowcase.destroy === 'function') {
-                    window.heartDiseaseShowcase.destroy();
+                if (window.projectShowcase && typeof window.projectShowcase.destroy === 'function') {
+                    window.projectShowcase.destroy();
                 }
-                if (page === 'pages/projects/math4322.html' && window.heartDiseaseShowcase && typeof window.heartDiseaseShowcase.init === 'function') {
-                    window.heartDiseaseShowcase.init();
+                if (document.querySelector('[data-hd-showcase]') && window.projectShowcase && typeof window.projectShowcase.init === 'function') {
+                    window.projectShowcase.init();
                 }
 
                 // Update active nav link (sidebar)

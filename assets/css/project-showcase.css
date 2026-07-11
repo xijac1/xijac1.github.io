@@ -1,6 +1,7 @@
-/* Heart Disease Classification project showcase
+/* Shared project page showcase template
    Scoped under .hd-showcase. Light/dark tokens match site panels:
-   light rgba white ~0.82–0.84, dark rgba(16, 20, 30, 0.75). */
+   light rgba white ~0.82–0.84, dark rgba(16, 20, 30, 0.75).
+   Accent: #0077b5 in light and dark mode. */
 
 .hd-showcase {
   --hd-bg: transparent;
@@ -613,6 +614,49 @@ body.dark-theme .hd-showcase {
 .hd-showcase button:focus-visible {
   outline: 2px solid var(--hd-accent);
   outline-offset: 2px;
+}
+
+
+/* Real screenshots inside shot frames */
+.hd-showcase .hd-shot-frame:has(img) {
+  padding: 0;
+  background: var(--hd-panel-2);
+}
+
+.hd-showcase .hd-shot-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Even grids (e.g. 4 demos / 4 features) */
+.hd-showcase .hd-shot-grid.hd-shot-grid--2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.hd-showcase .hd-shot-grid.hd-shot-grid--2 .hd-shot:first-child {
+  grid-row: auto;
+}
+
+.hd-showcase .hd-shot-grid.hd-shot-grid--2 .hd-shot:first-child .hd-shot-frame {
+  aspect-ratio: 16 / 10;
+}
+
+.hd-showcase .hd-feature-grid.hd-feature-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.hd-showcase .hd-feature-grid.hd-feature-grid--4 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 760px) {
+  .hd-showcase .hd-feature-grid.hd-feature-grid--2,
+  .hd-showcase .hd-feature-grid.hd-feature-grid--4,
+  .hd-showcase .hd-shot-grid.hd-shot-grid--2 {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Override site .projects-page solid card look for this showcase only */

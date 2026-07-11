@@ -1,10 +1,23 @@
 (function () {
-  const SECTION_IDS = ['overview', 'screenshots', 'code', 'stack', 'resources'];
   let scrollHandler = null;
   let clickHandler = null;
 
   function getRoot() {
     return document.querySelector('[data-hd-showcase]');
+  }
+
+  function getSectionIds(root) {
+    const fromTabs = Array.from(root.querySelectorAll('[data-hd-section]'))
+      .map((tab) => tab.getAttribute('data-hd-section'))
+      .filter(Boolean);
+
+    if (fromTabs.length) {
+      return fromTabs;
+    }
+
+    return Array.from(root.querySelectorAll('.hd-section[id]'))
+      .map((section) => section.id)
+      .filter(Boolean);
   }
 
   function setActiveTab(root, sectionId) {
@@ -15,9 +28,14 @@
   }
 
   function onScroll(root) {
-    let current = SECTION_IDS[0];
-    SECTION_IDS.forEach((id) => {
-      const el = root.querySelector('#' + id);
+    const sectionIds = getSectionIds(root);
+    if (!sectionIds.length) {
+      return;
+    }
+
+    let current = sectionIds[0];
+    sectionIds.forEach((id) => {
+      const el = root.querySelector('#' + CSS.escape(id));
       if (el && window.scrollY >= el.offsetTop - 140) {
         current = id;
       }
@@ -26,7 +44,7 @@
   }
 
   function scrollToSection(root, sectionId) {
-    const el = root.querySelector('#' + sectionId);
+    const el = root.querySelector('#' + CSS.escape(sectionId));
     if (!el) {
       return;
     }
@@ -37,9 +55,6 @@
 
   function onRootClick(event) {
     const root = getRoot();
-    if (!root || !root.contains(event.target)) {
-      // Still allow copy only when inside showcase
-    }
 
     const tab = event.target.closest('[data-hd-section]');
     if (tab && root && root.contains(tab)) {
@@ -105,8 +120,11 @@
     onScroll(root);
   }
 
-  window.heartDiseaseShowcase = {
+  window.projectShowcase = {
     init,
     destroy,
   };
+
+  // Back-compat alias for older references
+  window.heartDiseaseShowcase = window.projectShowcase;
 })();
