@@ -458,9 +458,9 @@ footer {
 .sidebar .nav-link {
     display: flex;
     align-items: center;
+    justify-content: center;
     color: #333 !important;
     text-decoration: none !important;
-    padding: 10px;
     transition: background 0.2s;
     font-size: 16px;
 }
@@ -481,6 +481,11 @@ footer {
 
 .sidebar:hover .link-text {
     display: inline;
+}
+
+/* Remove icon margin when collapsed so icons center perfectly */
+.sidebar:not(:hover) .nav-link i {
+    margin-right: -2px;
 }
 
 .theme-toggle-nav {
@@ -1492,8 +1497,8 @@ footer {
 .sidebar .nav-link.active {
     background-color: #0077b5 !important;
     color: #fff !important;
-    border-left: 5px solid #0077b5;
-    border-radius: 0 8px 8px 0;
+    border-left: 0px solid #0077b5;
+    border-radius: 8px 8px 8px 8px;
 }
 .sidebar .nav-link.active i {
     color: #fff !important;
