@@ -1,68 +1,210 @@
-<div class="container-fluid projects-page page-container project-page">
-  <h1 class="titles">📊 Heart Disease Classification</h1>
+<div class="container-fluid projects-page page-container project-page hd-showcase" data-hd-showcase>
+  <!-- Editor-style tab nav -->
+  <nav class="hd-tabbar" aria-label="Project sections">
+    <div class="hd-tabbar-inner">
+      <button type="button" class="hd-tab active" data-hd-section="overview">overview.md</button>
+      <button type="button" class="hd-tab" data-hd-section="screenshots">results/</button>
+      <button type="button" class="hd-tab" data-hd-section="code">model.R</button>
+      <button type="button" class="hd-tab" data-hd-section="stack">stack.json</button>
+      <button type="button" class="hd-tab" data-hd-section="resources">links.md</button>
+    </div>
+  </nav>
 
-  <div class="section project-section">
-    <h3>Overview</h3>
-    <p>
-      Heart disease is the leading cause of death in the US (CDC, 2022), claiming a life every 33 seconds. This project uses a UCI dataset (303 patients from Cleveland, Hungary, Switzerland, VA Long Beach) with 13 features (age, sex, chest pain type, etc.) to build classification models predicting heart disease presence (binary: yes/no).
-      <br><br>
-      Goals: Identify key predictors, compare models (Logistic Regression vs. Random Forest), and answer: Which features matter most? What's the best model? Does age matter? Is it more common in males?
-      <br><br>
-      Built by Group 5: Almin Raja, Dinh Mai, Julio Amaya, Subhan Mehmood, Nicholas Pham.
-    </p>
-  </div>
+  <!-- Hero -->
+  <header class="hd-hero">
+    <div class="hd-wrap">
+      <div class="hd-terminal">
+        <div class="hd-terminal-head">
+          <span class="hd-dot-red"></span><span class="hd-dot-yellow"></span><span class="hd-dot-green"></span>
+          <span class="hd-terminal-title">~/projects/heart-disease-classification</span>
+        </div>
+        <div class="hd-terminal-body">
+          <p class="hd-prompt-line">Rscript train_models.R --cv 10-fold</p>
+          <h1>Heart Disease Classification that finds <span class="hd-accent">what actually predicts</span> risk.</h1>
+          <p class="hd-lede">Heart disease is the leading cause of death in the US (CDC, 2022), claiming a life every 33 seconds. This project uses a UCI dataset of 303 patients and 13 clinical features to build binary classification models that predict heart disease presence.</p>
+          <div class="hd-badge-row">
+            <span class="hd-badge">MATH 4322</span>
+            <span class="hd-badge">R</span>
+            <span class="hd-badge">Logistic Regression</span>
+            <span class="hd-badge">Random Forest</span>
+            <span class="hd-badge">UCI Dataset</span>
+            <span class="hd-badge">Group 5</span>
+          </div>
+          <div class="hd-cta-row">
+            <a href="https://github.com/xijac1/Heart-Disease-Classification" class="hd-btn hd-btn-primary" target="_blank" rel="noopener">
+              View on GitHub →
+            </a>
+            <a href="/assets/certifications/pdf/Heart-Disease-Classification-Final-Report.pdf" class="hd-btn hd-btn-outline" target="_blank" rel="noopener">Full Technical Report</a>
+            <a href="https://archive.ics.uci.edu/dataset/45/heart+disease" class="hd-btn hd-btn-outline" target="_blank" rel="noopener">Dataset Source</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-  <div class="section project-section">
-    <h3>Tech Stack</h3>
-    <ul>
-      <li>R (base, glm for Logistic Regression, randomForest package)</li>
-      <li>Data: CSV import via read.csv(), cross-validation (80/20 splits)</li>
-      <li>Visualization: varImpPlot for feature importance, confusion matrices</li>
-      <li>Tools: Quarto for report generation, UCI ML Repository dataset</li>
-    </ul>
-  </div>
+  <!-- Overview -->
+  <section id="overview" class="hd-section">
+    <div class="hd-wrap">
+      <p class="hd-eyebrow">overview</p>
+      <h2>What it does</h2>
+      <p class="hd-section-desc">Built on the UCI Heart Disease dataset (Cleveland, Hungary, Switzerland, VA Long Beach), the project identifies key predictors, compares Logistic Regression vs. Random Forest, and answers: which features matter most, which model is best, whether age matters, and whether disease is more common in males. Built by Group 5: Almin Raja, Dinh Mai, Julio Amaya, Subhan Mehmood, Nicholas Pham.</p>
+      <div class="hd-feature-grid">
+        <div class="hd-feature">
+          <span class="hd-num">01</span>
+          <h3>Data handling</h3>
+          <p>14 variables total: 13 predictors plus binary response <span class="hd-mono">num</span>. Mix of categorical features (sex, chest pain type) and numerical ones (age, cholesterol) prepared for modeling.</p>
+        </div>
+        <div class="hd-feature">
+          <span class="hd-num">02</span>
+          <h3>Logistic Regression</h3>
+          <p>Optimal model with 8 significant predictors (sex, cp, trestbps, thalach, exang, slope, ca, thal). 82.46% accuracy via 10-fold cross-validation.</p>
+        </div>
+        <div class="hd-feature">
+          <span class="hd-num">03</span>
+          <h3>Random Forest</h3>
+          <p>500 trees for non-linear structure; 80.33% accuracy on the full model. Top features by importance: ca, thal, and cp.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="section project-section">
-    <h3>Key Features & Analysis</h3>
-    <ul>
-      <li><strong>Data Handling:</strong> 14 variables (13 predictors + binary response 'num'). Categorical (e.g., sex, cp) & numerical (e.g., age, chol) features.</li>
-      <li><strong>Logistic Regression:</strong> Optimal model with 8 significant predictors (sex, cp, trestbps, thalach, exang, slope, ca, thal). 82.46% accuracy via 10-fold CV.</li>
-      <li><strong>Random Forest:</strong> 500 trees, handles non-linearity; 80.33% accuracy (full model). ca, thal, cp as top features.</li>
-      <li><strong>Insights:</strong> Age not significant; heart disease 55% more likely in males (vs. 26% females).</li>
-    </ul>
-  </div>
+  <!-- Results -->
+  <section id="screenshots" class="hd-section">
+    <div class="hd-wrap">
+      <p class="hd-eyebrow">results</p>
+      <h2>Key findings</h2>
+      <p class="hd-section-desc">Model comparison, top predictors, and clinical insights from the full technical report — confusion matrices, p-values, and step() AIC selection support triage-oriented predictions.</p>
+      <div class="hd-shot-grid">
+        <div class="hd-shot">
+          <div class="hd-shot-frame">best-model<br>Logistic Regression<br>82.46% accuracy</div>
+          <div class="hd-shot-caption"><strong>Best model</strong> — Logistic Regression outperformed Random Forest (17.54% vs. 19.67% error rate), with the lowest AIC and residual deviance using the selected predictors.</div>
+        </div>
+        <div class="hd-shot">
+          <div class="hd-shot-frame">top-predictors<br>cp · ca · thal · sex</div>
+          <div class="hd-shot-caption"><strong>Top predictors</strong> — chest pain type (cp), vessels colored by fluoroscopy (ca), thalassemia (thal), and sex.</div>
+        </div>
+        <div class="hd-shot">
+          <div class="hd-shot-frame">clinical-insights<br>age · sex risk</div>
+          <div class="hd-shot-caption"><strong>Insights</strong> — age was not significant; heart disease was 55% more likely in males versus 26% in females.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="section project-section">
-    <h3>Results</h3>
-    <p>
-      <strong>Best Model:</strong> Logistic Regression outperformed Random Forest (17.54% vs. 19.67% error rate). Lowest AIC/residual deviance with key predictors.
-      <br><br>
-      <strong>Top Predictors:</strong> Chest pain type (cp), vessels (ca), thalassemia (thal), sex.
-      <br><br>
-      Full report metrics: Confusion matrices, p-values, and step() AIC selection confirm robust predictions for medical triage.
-    </p>
-  </div>
+  <!-- Code sample -->
+  <section id="code" class="hd-section">
+    <div class="hd-wrap">
+      <p class="hd-eyebrow">code</p>
+      <h2>What using it looks like</h2>
+      <p class="hd-section-desc">Representative R workflow: load the UCI CSV, fit logistic regression and a 500-tree random forest, then evaluate with cross-validation and feature importance.</p>
+      <div class="hd-code-block">
+        <div class="hd-code-head">
+          <span>model.R</span>
+          <button type="button" class="hd-copy-btn" data-hd-copy data-hd-copy-target="code-sample">copy</button>
+        </div>
+        <pre id="code-sample"><code><span class="hd-c-com"># Heart disease: logistic regression + random forest</span>
+<span class="hd-c-kw">library</span>(randomForest)
 
-  <div class="btn-row btn-row--center project-actions">
-    <a href="/assets/certifications/pdf/Heart-Disease-Classification-Final-Report.pdf" target="_blank" class="btn btn-outline-dark">
-      📄 Full Technical Report
-    </a>
-    <a href="https://archive.ics.uci.edu/dataset/45/heart+disease" target="_blank" class="btn btn-outline-primary">
-      🔗 Dataset Source
-    </a>
-    <a href="https://www.cdc.gov/heart-disease/data-research/facts-stats/index.html" target="_blank" class="btn btn-outline-info">
-      📊 CDC Facts
-    </a>
-    <a href="https://github.com/xijac1/Heart-Disease-Classification" target="_blank" class="btn btn-outline-success">
-      <i class="bi bi-github"></i> View Code on GitHub
-    </a>
-  </div>
+heart &lt;- <span class="hd-c-fn">read.csv</span>(<span class="hd-c-str">"heart.csv"</span>)
+heart$num &lt;- <span class="hd-c-fn">factor</span>(heart$num &gt; <span class="hd-c-num">0</span>)  <span class="hd-c-com"># binary: disease yes/no</span>
 
-  <div class="section project-section project-bibliography">
-    <h5>Bibliography</h5>
-    <ul>
-      <li>Andras Janosi, William Steinbrunn. Heart Disease. UCI Machine Learning Repository, 1989. <a href="https://doi.org/10.24432/C52P4X">DOI</a>.</li>
-      <li>CDC. “Heart Disease Facts.” <a href="https://www.cdc.gov/heart-disease/data-research/facts-stats/index.html">Link</a>, Feb 2025.</li>
-    </ul>
+<span class="hd-c-com"># Optimal logistic model (8 significant predictors)</span>
+logit &lt;- <span class="hd-c-fn">glm</span>(
+  num ~ sex + cp + trestbps + thalach + exang + slope + ca + thal,
+  data = heart,
+  family = <span class="hd-c-fn">binomial</span>()
+)
+
+<span class="hd-c-com"># Random forest: 500 trees, full feature set</span>
+rf &lt;- <span class="hd-c-fn">randomForest</span>(num ~ ., data = heart, ntree = <span class="hd-c-num">500</span>)
+<span class="hd-c-fn">varImpPlot</span>(rf)  <span class="hd-c-com"># ca, thal, cp dominate importance</span>
+
+<span class="hd-c-com"># 10-fold CV accuracy ~82.46% (logit) vs ~80.33% (rf)</span>
+<span class="hd-c-fn">print</span>(<span class="hd-c-fn">summary</span>(logit))</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stack -->
+  <section id="stack" class="hd-section">
+    <div class="hd-wrap">
+      <p class="hd-eyebrow">stack</p>
+      <h2>Built with</h2>
+      <p class="hd-section-desc">Languages, packages, data sources, and tooling used for modeling, evaluation, and reporting.</p>
+      <div class="hd-stack-row">
+        <span class="hd-stack-pill">R</span>
+        <span class="hd-stack-pill">glm (Logistic Regression)</span>
+        <span class="hd-stack-pill">randomForest</span>
+        <span class="hd-stack-pill">read.csv</span>
+        <span class="hd-stack-pill">10-fold CV</span>
+        <span class="hd-stack-pill">varImpPlot</span>
+        <span class="hd-stack-pill">Quarto</span>
+        <span class="hd-stack-pill">UCI ML Repository</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources -->
+  <section id="resources" class="hd-section">
+    <div class="hd-wrap">
+      <p class="hd-eyebrow">resources</p>
+      <h2>Links</h2>
+      <p class="hd-section-desc">Code, report, data, and references for this project.</p>
+      <div class="hd-resource-grid">
+        <a href="https://github.com/xijac1/Heart-Disease-Classification" class="hd-resource-card" target="_blank" rel="noopener">
+          <div>
+            <div class="hd-r-label">SOURCE</div>
+            <div class="hd-r-title">GitHub Repository</div>
+          </div>
+          <span class="hd-arrow">↗</span>
+        </a>
+        <a href="/assets/certifications/pdf/Heart-Disease-Classification-Final-Report.pdf" class="hd-resource-card" target="_blank" rel="noopener">
+          <div>
+            <div class="hd-r-label">REPORT</div>
+            <div class="hd-r-title">Full Technical Report (PDF)</div>
+          </div>
+          <span class="hd-arrow">↗</span>
+        </a>
+        <a href="https://archive.ics.uci.edu/dataset/45/heart+disease" class="hd-resource-card" target="_blank" rel="noopener">
+          <div>
+            <div class="hd-r-label">DATASET</div>
+            <div class="hd-r-title">UCI Heart Disease</div>
+          </div>
+          <span class="hd-arrow">↗</span>
+        </a>
+        <a href="https://www.cdc.gov/heart-disease/data-research/facts-stats/index.html" class="hd-resource-card" target="_blank" rel="noopener">
+          <div>
+            <div class="hd-r-label">CONTEXT</div>
+            <div class="hd-r-title">CDC Heart Disease Facts</div>
+          </div>
+          <span class="hd-arrow">↗</span>
+        </a>
+        <a href="https://doi.org/10.24432/C52P4X" class="hd-resource-card" target="_blank" rel="noopener">
+          <div>
+            <div class="hd-r-label">CITATION</div>
+            <div class="hd-r-title">Janosi &amp; Steinbrunn (1989) — DOI</div>
+          </div>
+          <span class="hd-arrow">↗</span>
+        </a>
+        <a href="https://www.cdc.gov/heart-disease/data-research/facts-stats/index.html" class="hd-resource-card" target="_blank" rel="noopener">
+          <div>
+            <div class="hd-r-label">BIBLIOGRAPHY</div>
+            <div class="hd-r-title">CDC. “Heart Disease Facts.” Feb 2025</div>
+          </div>
+          <span class="hd-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="hd-page-footer">
+    <div class="hd-wrap">
+      <p>© 2026 Group 5 — Almin Raja, Dinh Mai, Julio Amaya, Subhan Mehmood, Nicholas Pham</p>
+      <div class="hd-foot-links">
+        <a href="https://github.com/xijac1/Heart-Disease-Classification" target="_blank" rel="noopener">GitHub</a>
+        <a href="/assets/certifications/pdf/Heart-Disease-Classification-Final-Report.pdf" target="_blank" rel="noopener">Report</a>
+        <a href="https://archive.ics.uci.edu/dataset/45/heart+disease" target="_blank" rel="noopener">Dataset</a>
+      </div>
+    </div>
   </div>
 </div>
