@@ -472,6 +472,7 @@ footer {
 .sidebar .nav-link i {
     font-size: 20px;
     margin-right: 10px;
+    margin-top: 3px; /* works for the extended navbar*/
 }
 
 .link-text {
@@ -486,6 +487,7 @@ footer {
 /* Remove icon margin when collapsed so icons center perfectly */
 .sidebar:not(:hover) .nav-link i {
     margin-right: -2px;
+    margin-top: 3px;
 }
 
 .theme-toggle-nav {
@@ -1616,7 +1618,7 @@ body.dark-theme .card-meta-row .tag-badge {
 
 body.dark-theme .filter-btn.active,
 body.dark-theme .filter-btn:hover {
-    background-color: #2563eb !important;
+    background-color: #0077b5 !important;
     color: #ffffff !important;
 }
 

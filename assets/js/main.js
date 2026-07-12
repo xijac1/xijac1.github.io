@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (savedTheme === 'dark' || savedTheme === 'light') {
             return savedTheme;
         }
-        return 'light';
+        return 'dark';
     }
 
     applyTheme(getSavedTheme());
