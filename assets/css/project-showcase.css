@@ -98,7 +98,7 @@ body.dark-theme .hd-showcase {
 }
 
 .hd-showcase .hd-tabbar-inner {
-  flex: 0 1 1032px;
+  flex: 0 1 1054px;
   display: flex;
   align-items: stretch;
   background: var(--hd-panel);
