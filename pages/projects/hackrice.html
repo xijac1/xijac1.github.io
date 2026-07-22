@@ -1,0 +1,207 @@
+<div class="container-fluid projects-page page-container project-page hd-showcase" data-hd-showcase>
+  <!-- Editor-style tab nav -->
+  <nav class="hd-tabbar" aria-label="Project sections">
+    <div class="hd-tabbar-inner">
+      <button type="button" class="hd-tab active" data-hd-section="overview">overview.md</button>
+      <button type="button" class="hd-tab" data-hd-section="screenshots">demo/</button>
+      <button type="button" class="hd-tab" data-hd-section="code">route.ts</button>
+      <button type="button" class="hd-tab" data-hd-section="stack">stack.json</button>
+      <button type="button" class="hd-tab" data-hd-section="resources">links.md</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hd-hero">
+    <div class="hd-wrap">
+      <div class="hd-terminal">
+        <div class="hd-terminal-head">
+          <span class="hd-dot-red"></span><span class="hd-dot-yellow"></span><span class="hd-dot-green"></span>
+          <span class="hd-terminal-title">~/projects/o_hare_air</span>
+        </div>
+        <div class="hd-terminal-body">
+          <p class="hd-prompt-line">npm run dev -- --app ohare-air</p>
+          <h1>O'Hare Air: personalized air-quality guidance that makes <span class="hd-accent">every breath count</span>.</h1>
+          <p class="hd-lede">Full-stack Next.js app built at HackRice 2025 that delivers personalized air-quality guidance, health-aware recommendations, saved location tracking, and route-oriented run planning. Powered by Google's Air Quality and Weather APIs.</p>
+          <div class="hd-badge-row">
+            <span class="hd-badge">Next.js</span>
+            <span class="hd-badge">TypeScript</span>
+            <span class="hd-badge">Express.js</span>
+            <span class="hd-badge">Tailwind CSS</span>
+            <span class="hd-badge">Google APIs</span>
+            <span class="hd-badge">Hackathon</span>
+          </div>
+          <div class="hd-cta-row">
+            <a href="https://github.com/xijac1/HackRice2025" class="hd-btn hd-btn-primary" target="_blank" rel="noopener">
+              View Source Code →
+            </a>
+            <a href="#" class="hd-btn hd-btn-outline" target="_blank" rel="noopener">Devpost Submission</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Overview -->
+  <section id="overview" class="hd-section">
+    <div class="hd-wrap">
+      <p class="hd-eyebrow">overview</p>
+      <h2>What it does</h2>
+      <p class="hd-section-desc">O'Hare Air turns real-time air quality data into a personal health companion: check your dashboard for local AQI, save places and track their conditions, log symptoms against exposure, and get run-coach recommendations for low-exposure outdoor activity.</p>
+      <div class="hd-feature-grid hd-feature-grid--4">
+        <div class="hd-feature">
+          <span class="hd-num">01</span>
+          <h3>Dashboard</h3>
+          <p>Shows current location, real-time AQI, weather conditions, saved place summaries, and personalized risk thresholds based on your health profile.</p>
+        </div>
+        <div class="hd-feature">
+          <span class="hd-num">02</span>
+          <h3>Health profile</h3>
+          <p>Set asthma, cardiopulmonary disease, pregnancy, age sensitivity, and lifestyle risk flags to tighten AQI thresholds and tailor guidance.</p>
+        </div>
+        <div class="hd-feature">
+          <span class="hd-num">03</span>
+          <h3>Saved places</h3>
+          <p>Add, rename, and delete places with Google Maps autocomplete. Each saved place is refreshed with live AQI, risk, outlook, and pollutant details.</p>
+        </div>
+        <div class="hd-feature">
+          <span class="hd-num">04</span>
+          <h3>Run coach</h3>
+          <p>Suggests route direction, time window, duration, and warning summary to guide outdoor activity toward lower-exposure conditions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo / screenshots -->
+  <section id="screenshots" class="hd-section">
+    <div class="hd-wrap">
+      <p class="hd-eyebrow">demo</p>
+      <h2>App in action</h2>
+      <p class="hd-section-desc">Explore O'Hare Air through product screenshots: Dashboard, health profile, saved places, and health log.</p>
+      <div class="hd-shot-grid hd-shot-grid--2">
+        <div class="hd-shot">
+          <div class="hd-shot-frame">
+            <img src="/assets/images/hackrice/dashboard.png" alt="O'Hare Air Dashboard">
+          </div>
+          <div class="hd-shot-caption"><strong>Dashboard</strong> — real-time AQI, weather, saved places, and personalized risk guidance.</div>
+        </div>
+        <div class="hd-shot">
+          <div class="hd-shot-frame">
+            <img src="/assets/images/hackrice/profile.png" alt="Health Profile">
+          </div>
+          <div class="hd-shot-caption"><strong>Health profile</strong> — set risk flags to tighten AQI thresholds and personalize alerts.</div>
+        </div>
+        <div class="hd-shot">
+          <div class="hd-shot-frame">
+            <img src="/assets/images/hackrice/places.png" alt="Saved Places">
+          </div>
+          <div class="hd-shot-caption"><strong>Saved places</strong> — add locations with Google Maps autocomplete and track live conditions.</div>
+        </div>
+        <div class="hd-shot">
+          <div class="hd-shot-frame">
+            <img src="/assets/images/hackrice/health.png" alt="Health Log">
+          </div>
+          <div class="hd-shot-caption"><strong>Health log</strong> — record symptoms and link them to exposure notes for pattern tracking.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Code sample -->
+  <section id="code" class="hd-section">
+    <div class="hd-wrap">
+      <p class="hd-eyebrow">code</p>
+      <h2>What using it looks like</h2>
+      <p class="hd-section-desc">Representative Next.js API route: fetch air quality for a given lat/lng from the Express backend proxy and return AQI, risk, and health recommendations to the dashboard.</p>
+      <div class="hd-code-block">
+        <div class="hd-code-head">
+          <span>route.ts</span>
+          <button type="button" class="hd-copy-btn" data-hd-copy data-hd-copy-target="code-sample-hackrice">copy</button>
+        </div>
+        <pre id="code-sample-hackrice"><code><span class="hd-c-com">// O'Hare Air: fetch air quality for dashboard</span>
+<span class="hd-c-kw">export async function</span> <span class="hd-c-fn">GET</span>(req: <span class="hd-c-fn">NextRequest</span>) {
+  <span class="hd-c-kw">const</span> { lat, lng } = <span class="hd-c-fn">Object.fromEntries</span>(
+    req.<span class="hd-c-fn">nextUrl</span>.<span class="hd-c-fn">searchParams</span>
+  );
+
+  <span class="hd-c-kw">const</span> res = <span class="hd-c-kw">await</span> <span class="hd-c-fn">fetch</span>(<span class="hd-c-str">`${BACKEND_URL}/api/air-quality?lat=${lat}&lng=${lng}`</span>);
+  <span class="hd-c-kw">const</span> data = <span class="hd-c-kw">await</span> res.<span class="hd-c-fn">json</span>();
+
+  <span class="hd-c-com">// { aqi, risk, pollutants, recommendations }</span>
+  <span class="hd-c-kw">return</span> <span class="hd-c-fn">NextResponse.json</span>(data);
+}</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stack -->
+  <section id="stack" class="hd-section">
+    <div class="hd-wrap">
+      <p class="hd-eyebrow">stack</p>
+      <h2>Built with</h2>
+      <p class="hd-section-desc">Frontend, backend, APIs, UI framework, and fonts used to ship O'Hare Air at HackRice 2025.</p>
+      <div class="hd-stack-row">
+        <span class="hd-stack-pill">Next.js</span>
+        <span class="hd-stack-pill">React</span>
+        <span class="hd-stack-pill">TypeScript</span>
+        <span class="hd-stack-pill">Tailwind CSS</span>
+        <span class="hd-stack-pill">shadcn/ui</span>
+        <span class="hd-stack-pill">Radix UI</span>
+        <span class="hd-stack-pill">Lucide Icons</span>
+        <span class="hd-stack-pill">Express.js</span>
+        <span class="hd-stack-pill">Google Air Quality API</span>
+        <span class="hd-stack-pill">Google Weather API</span>
+        <span class="hd-stack-pill">Google Maps Places</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources -->
+  <section id="resources" class="hd-section">
+    <div class="hd-wrap">
+      <p class="hd-eyebrow">resources</p>
+      <h2>Links</h2>
+      <p class="hd-section-desc">Source code, submission, and credits for this project.</p>
+      <div class="hd-resource-grid">
+        <a href="https://github.com/xijac1/HackRice2025" class="hd-resource-card" target="_blank" rel="noopener">
+          <div>
+            <div class="hd-r-label">SOURCE</div>
+            <div class="hd-r-title">GitHub Repository</div>
+          </div>
+          <span class="hd-arrow">↗</span>
+        </a>
+        <a href="#" class="hd-resource-card" target="_blank" rel="noopener">
+          <div>
+            <div class="hd-r-label">SUBMISSION</div>
+            <div class="hd-r-title">Devpost Project Page</div>
+          </div>
+          <span class="hd-arrow">↗</span>
+        </a>
+        <a href="https://hackrice.com/" class="hd-resource-card" target="_blank" rel="noopener">
+          <div>
+            <div class="hd-r-label">EVENT</div>
+            <div class="hd-r-title">HackRice 2025</div>
+          </div>
+          <span class="hd-arrow">↗</span>
+        </a>
+        <a href="https://www.rice.edu/" class="hd-resource-card" target="_blank" rel="noopener">
+          <div>
+            <div class="hd-r-label">SUPPORT</div>
+            <div class="hd-r-title">Rice University</div>
+          </div>
+          <span class="hd-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="hd-page-footer">
+    <div class="hd-wrap">
+      <p>© 2025 Team O'Hare Air — Julio Amaya, Sam Khudairi, Cluadette Sanchez</p>
+      <div class="hd-foot-links">
+        <a href="https://github.com/xijac1/HackRice2025" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://hackrice.com/" target="_blank" rel="noopener">HackRice</a>
+      </div>
+    </div>
+  </div>
+</div>
