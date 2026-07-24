@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateSidebarActive(page);
             })
             .catch(error => {
-                document.getElementById('dynamic-content').innerHTML = '<p>Error loading page. Please try again.</p>';
+                document.getElementById('dynamic-content').innerHTML = '<p style="margin-top: 20px;">Error loading page. Please try again.</p>';
                 console.error(error);
             });
     }
