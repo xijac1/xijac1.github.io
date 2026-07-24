@@ -1,0 +1,196 @@
+<div class="container-fluid projects-page page-container project-page hd-showcase" data-hd-showcase>
+  <!-- Editor-style tab nav -->
+  <nav class="hd-tabbar" aria-label="Project sections">
+    <div class="hd-tabbar-inner">
+      <button type="button" class="hd-tab active" data-hd-section="overview">overview.md</button>
+      <button type="button" class="hd-tab" data-hd-section="screenshots">demo/</button>
+      <button type="button" class="hd-tab" data-hd-section="code">auth.tsx</button>
+      <button type="button" class="hd-tab" data-hd-section="stack">stack.json</button>
+      <button type="button" class="hd-tab" data-hd-section="resources">links.md</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hd-hero">
+    <div class="hd-wrap">
+      <div class="hd-terminal">
+        <div class="hd-terminal-head">
+          <span class="hd-dot-red"></span><span class="hd-dot-yellow"></span><span class="hd-dot-green"></span>
+          <span class="hd-terminal-title">~/projects/volunteer-match</span>
+        </div>
+        <div class="hd-terminal-body">
+          <p class="hd-prompt-line">npm run dev</p>
+          <h1>VolunteerMatch: a full-stack volunteer management platform that makes <span class="hd-accent">coordinating service seamless</span>.</h1>
+          <p class="hd-lede">Full-stack web application for managing volunteers, events, and administrative workflows. Features role-based access control, real-time notifications, event management, volunteer matching, and reporting. Streamlines how organizations manage their volunteers.</p>
+          <div class="hd-badge-row">
+            <span class="hd-badge">React</span>
+            <span class="hd-badge">JavaScript</span>
+            <span class="hd-badge">Express</span>
+            <span class="hd-badge">Firebase</span>
+            <span class="hd-badge">Material UI</span>
+            <span class="hd-badge">Supabase</span>
+          </div>
+          <div class="hd-cta-row">
+            <a href="https://github.com/xijac1/software-design-project" class="hd-btn hd-btn-primary" target="_blank" rel="noopener">
+              View Source Code →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Overview -->
+  <section id="overview" class="hd-section">
+    <div class="hd-wrap">
+      <p class="hd-eyebrow">overview</p>
+      <h2>What it does</h2>
+      <p class="hd-section-desc">VolunteerMatch turns volunteer coordination into a guided experience: volunteers register, complete profiles, track their history, and receive notifications — while administrators manage events, match volunteers to opportunities, and access analytics dashboards. Built with role-aware routing and a demo mode for easy exploration.</p>
+      <div class="hd-feature-grid hd-feature-grid--4">
+        <div class="hd-feature">
+          <span class="hd-num">01</span>
+          <h3>Authentication & access control</h3>
+          <p>Firebase-powered login and registration with React Router route guards for private pages, profile-completion flows, and admin-only areas.</p>
+        </div>
+        <div class="hd-feature">
+          <span class="hd-num">02</span>
+          <h3>Volunteer experience</h3>
+          <p>Homepage, profile management, notifications, and volunteer history with a persistent navbar and role-aware navigation.</p>
+        </div>
+        <div class="hd-feature">
+          <span class="hd-num">03</span>
+          <h3>Administrator tools</h3>
+          <p>Event management, volunteer matching, and an admin dashboard — all hidden from regular volunteers behind role-based guards.</p>
+        </div>
+        <div class="hd-feature">
+          <span class="hd-num">04</span>
+          <h3>Notifications & reporting</h3>
+          <p>Firebase Cloud Messaging for in-app notifications, plus PDF and CSV export workflows for admin reporting and operational summaries.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo / screenshots -->
+  <section id="screenshots" class="hd-section">
+    <div class="hd-wrap">
+      <p class="hd-eyebrow">demo</p>
+      <h2>App in action</h2>
+      <p class="hd-section-desc">Explore VolunteerMatch through product screenshots — dashboard, event management, notifications, and volunteer history.</p>
+      <div class="hd-shot-grid hd-shot-grid--2">
+        <div class="hd-shot">
+          <div class="hd-shot-frame">
+            <img src="/assets/images/volunteerMatching/dashboard.png" alt="Admin Dashboard">
+          </div>
+          <div class="hd-shot-caption"><strong>Admin dashboard</strong> — overview of volunteer activity, event metrics, and reporting tools.</div>
+        </div>
+        <div class="hd-shot">
+          <div class="hd-shot-frame">
+            <img src="/assets/images/volunteerMatching/eventManagement.png" alt="Event Management">
+          </div>
+          <div class="hd-shot-caption"><strong>Event management</strong> — create, edit, and manage volunteer opportunities with administrative controls.</div>
+        </div>
+        <div class="hd-shot">
+          <div class="hd-shot-frame">
+            <img src="/assets/images/volunteerMatching/notifications.png" alt="Notifications Page">
+          </div>
+          <div class="hd-shot-caption"><strong>Notifications</strong> — real-time in-app notifications powered by Firebase Cloud Messaging.</div>
+        </div>
+        <div class="hd-shot">
+          <div class="hd-shot-frame">
+            <img src="/assets/images/volunteerMatching/volunteerHistory.png" alt="Volunteer History">
+          </div>
+          <div class="hd-shot-caption"><strong>Volunteer history</strong> — track past volunteer activity, hours logged, and event participation.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Code sample -->
+  <section id="code" class="hd-section">
+    <div class="hd-wrap">
+      <p class="hd-eyebrow">code</p>
+      <h2>What using it looks like</h2>
+      <p class="hd-section-desc">Representative React component: role-based route guard that checks authentication state and user role before granting access to admin pages.</p>
+      <div class="hd-code-block">
+        <div class="hd-code-head">
+          <span>auth.tsx</span>
+          <button type="button" class="hd-copy-btn" data-hd-copy data-hd-copy-target="code-sample-volunteer">copy</button>
+        </div>
+        <pre id="code-sample-volunteer"><code><span class="hd-c-com">// VolunteerMatch: role-based route guard</span>
+<span class="hd-c-kw">function</span> <span class="hd-c-fn">AdminRoute</span>({ children }) {
+  <span class="hd-c-kw">const</span> { user, role } = <span class="hd-c-fn">useAuth</span>();
+  <span class="hd-c-kw">const</span> navigate = <span class="hd-c-fn">useNavigate</span>();
+
+  <span class="hd-c-kw">if</span> (!user) {
+    <span class="hd-c-kw">return</span> <span class="hd-c-fn"><</span>Navigate to=<span class="hd-c-str">"/login"</span> /<span class="hd-c-fn">></span>;
+  }
+
+  <span class="hd-c-kw">if</span> (role !== <span class="hd-c-str">"admin"</span> && role !== <span class="hd-c-str">"administrator"</span>) {
+    <span class="hd-c-kw">return</span> <span class="hd-c-fn"><</span>Navigate to=<span class="hd-c-str">"/dashboard"</span> /<span class="hd-c-fn">></span>;
+  }
+
+  <span class="hd-c-kw">return</span> children;
+}</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stack -->
+  <section id="stack" class="hd-section">
+    <div class="hd-wrap">
+      <p class="hd-eyebrow">stack</p>
+      <h2>Built with</h2>
+      <p class="hd-section-desc">Frontend, backend, auth, database, and messaging technologies used to ship VolunteerMatch.</p>
+      <div class="hd-stack-row">
+        <span class="hd-stack-pill">React</span>
+        <span class="hd-stack-pill">JavaScript</span>
+        <span class="hd-stack-pill">Material UI</span>
+        <span class="hd-stack-pill">React Router</span>
+        <span class="hd-stack-pill">Firebase Auth</span>
+        <span class="hd-stack-pill">Firebase Admin</span>
+        <span class="hd-stack-pill">Firebase Cloud Messaging</span>
+        <span class="hd-stack-pill">Node.js</span>
+        <span class="hd-stack-pill">Express</span>
+        <span class="hd-stack-pill">Supabase</span>
+        <span class="hd-stack-pill">pdfkit</span>
+        <span class="hd-stack-pill">csv-writer</span>
+        <span class="hd-stack-pill">Jest</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources -->
+  <section id="resources" class="hd-section">
+    <div class="hd-wrap">
+      <p class="hd-eyebrow">resources</p>
+      <h2>Links</h2>
+      <p class="hd-section-desc">Source code and credits for this project.</p>
+      <div class="hd-resource-grid">
+        <a href="https://github.com/xijac1/software-design-project" class="hd-resource-card" target="_blank" rel="noopener">
+          <div>
+            <div class="hd-r-label">SOURCE</div>
+            <div class="hd-r-title">GitHub Repository</div>
+          </div>
+          <span class="hd-arrow">↗</span>
+        </a>
+        <a href="https://www.uh.edu/" class="hd-resource-card" target="_blank" rel="noopener">
+          <div>
+            <div class="hd-r-label">SUPPORT</div>
+            <div class="hd-r-title">University of Houston</div>
+          </div>
+          <span class="hd-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="hd-page-footer">
+    <div class="hd-wrap">
+      <p>© 2026 VolunteerMatch — Julio Amaya, Sam Khudairi, Subhan Mehmood, Claudette Sanchez</p>
+      <div class="hd-foot-links">
+        <a href="https://github.com/xijac1/software-design-project" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </div>
+</div>
